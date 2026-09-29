@@ -1,0 +1,34 @@
+[
+  {
+    "name": "carbon",
+    "description": "Run a bounded risk-based assessment of a project or URL, including business value, stateful checks, persona exploration and an evidence-qualified report."
+  },
+  {
+    "name": "carbon-demo",
+    "description": "Create a disposable demo project, optionally with existing tests, and perform a first CARBON assessment."
+  },
+  {
+    "name": "carbon-test",
+    "description": "Test one named feature, flow, API or behavior with reproducible steps and evidence."
+  },
+  {
+    "name": "carbon-issues",
+    "description": "Hunt bugs with stateful multi-step journeys and persona exploration, not just a static checklist."
+  },
+  {
+    "name": "carbon-accessibility",
+    "description": "Investigate accessibility using source, keyboard, zoom, visual and dynamic browser evidence."
+  },
+  {
+    "name": "carbon-map",
+    "description": "Open a screenshot-based map of one saved Free assessment, its checks and findings. Not a cross-build planning workspace."
+  },
+  {
+    "name": "carbon-help",
+    "description": "Explain Free commands, inspect scope when requested, and suggest the smallest useful next assessment."
+  },
+  {
+    "name": "carbon-settings",
+    "description": "Read or change project testing defaults and analytics preferences in a protected local settings page."
+  }
+]

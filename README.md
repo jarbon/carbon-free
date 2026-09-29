@@ -1,0 +1,114 @@
+# CARBON Free
+
+AI testing inside your coding agent. Built by [testers.ai](https://testers.ai).
+
+CARBON gives your coding agent risk-based testing instructions and a local evidence
+runtime. The agent inspects your authorized project, runs checks using its available
+browser, terminal or API tools, and records findings in a live report. CARBON's MCP
+server does not independently run the investigation or manufacture results.
+
+## Eight workflows
+
+| Skill | Purpose |
+| --- | --- |
+| `carbon` | Bounded risk-based assessment, including business value and persona journeys |
+| `carbon-demo` | Create a disposable sample project, then assess it |
+| `carbon-test` | Test one named behavior, feature or change |
+| `carbon-issues` | Bug hunt with at least half the budget for stateful and persona exploration |
+| `carbon-accessibility` | Focused accessibility investigation with evidence and limitations |
+| `carbon-map` | Explore screenshots, checks and findings from the current assessment |
+| `carbon-help` | Choose an appropriate Free workflow |
+| `carbon-settings` | Change local planning defaults and analytics preference |
+
+All recorded findings, persona journeys, HTML/JSON exports and current-run maps are
+included. No CARBON account, payment or finding unlock is required. Your coding-agent
+subscription or API usage is separate. The usual 20-minute/20-check planning default
+is adjustable, not a coverage guarantee or hard run quota.
+
+## Install and start in Claude Code
+
+Requirements: Node.js 22 or later; Python 3.10 or later for the optional demo creator.
+No npm install is needed for the MCP runtime. Browser automation depends on the tools
+your coding agent has available. Optional demo tests have their own documented dependencies.
+
+```sh
+git clone https://github.com/jarbon/carbon-free.git
+claude --plugin-dir /absolute/path/to/carbon-free
+```
+
+Replace the path with your checkout. Claude Code normally prefixes plugin skills
+with the plugin name. Try these three examples:
+
+1. `/carbon:carbon-demo` — create a fresh sample and perform a bounded assessment.
+2. `/carbon:carbon-issues ./my-app` — investigate bugs, including state transitions and multi-step journeys, in an authorized project.
+3. `/carbon:carbon-accessibility http://localhost:3000` — test an app you control; report actual evidence and untested criteria separately.
+
+Use `/carbon:carbon-map` for the latest assessment or `/carbon:carbon-settings` to
+adjust defaults. Names and embedded-browser support can vary by host/version; use
+the host's skill picker. Install one CARBON edition at a time because editions share
+the `carbon` namespace. This repository is not a claim of Anthropic approval or listing.
+
+The bundle also contains a Codex manifest. Other MCP hosts may launch
+`node /absolute/path/to/carbon-free/server/index.mjs`, then expose the bundled skills
+through their supported mechanism. A chat host without local process/browser access
+cannot provide the same runtime behavior. Test the surface you intend to use.
+
+## What runs, writes and connects
+
+- The declared MCP entry point is `server/index.mjs`, using Node standard libraries.
+- Demo creation invokes bundled `runtime/carbon/scripts/carbon_demo.py` via Python.
+  Fixtures are synthetic examples, some intentionally imperfect; never deploy them as production apps.
+- Evidence and report snapshots are saved under your project's `.carbon/free/`.
+  Existing reports are retained. Uninstalling does not erase evidence.
+- Live report/settings views bind to `127.0.0.1` and use random access tokens.
+  The agent opens them with its own browser/panel tool where supported. Saved HTML
+  remains usable after the runtime stops. Review exports before sharing.
+- Anonymous command analytics is **enabled by default** and sends fixed command
+  event names to `https://cdn.usefathom.com/`. It does not send prompts, source,
+  target URLs, screenshots, findings, credentials or a stable user identifier.
+  Network metadata is visible to that service. Set `CARBON_ANALYTICS=off` before
+  startup or disable analytics in settings. No telemetry is sent merely by importing the module.
+- Global analytics preference and delivery diagnostics use `.config/carbon/` in
+  your user home. Project evidence has no automatic expiration; you control retention.
+- Your coding agent's model provider still processes the context you share with it.
+  Browser/API checks contact the authorized target and potentially its third parties.
+  Local-first does not mean air-gapped.
+
+See the [privacy policy](https://github.com/jarbon/carbon-free/blob/main/PRIVACY.md)
+for data handling, retention and contact details. There is no private benchmark
+fetch, reviewer service, remote MCP backend or Pro unlock code in this bundle.
+
+## Interpreting results
+
+Only recorded evidence is displayed. Unexecuted tests remain blocked or deferred;
+suspected issues are distinguished from demonstrated failures. Confidence is scoped
+engineering judgment, not a calibrated probability that the whole product is correct.
+AI persona feedback is simulated, not human research. Accessibility results are not
+a certification or legal opinion. This Free runtime does not generate formal DOCX
+conformance documents or run continuous automatic repair.
+
+## Troubleshooting and support
+
+- Missing tools: check Node with `node --version`, reload the plugin and inspect the
+  host's MCP connection status. Run `claude plugin validate .` from the checkout.
+- Expired live link: reopen the saved run with `carbon_report` or open its saved HTML.
+- No browser available: run authorized static/API checks and disclose untested UI scope.
+- Demo setup failure: check `python3 --version` and the selected fixture's README.
+- Do not post private code, report tokens, screenshots or customer records in public issues.
+
+Product/security support: [jason@testers.ai](mailto:jason@testers.ai).
+Reproducible non-sensitive problems: [GitHub issues](https://github.com/jarbon/carbon-free/issues).
+
+## Runtime regression checks
+
+From the repository root, run `node tests/smoke.mjs .`. The checks use temporary
+synthetic projects and disable analytics. They exercise the MCP interface, demo
+copying, report lifecycle, evidence exports, settings persistence, authentication,
+cross-origin rejection and symlink protection. They do not certify accessibility,
+security, or performance of an application under test.
+
+## License and product information
+
+Source-available under the unmodified PolyForm Perimeter 1.0.0 license, not
+unrestricted open source. Read [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md).
+Product edition information is available on the [CARBON website](https://testers.ai/carbon/).

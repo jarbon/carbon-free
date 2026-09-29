@@ -1,0 +1,10 @@
+{
+  "name": "@testers-ai/carbon-free",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "version": "1.32.22-free.2",
+  "license": "PolyForm-Perimeter-1.0.0"
+}

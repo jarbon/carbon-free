@@ -1,0 +1,39 @@
+{
+  "name": "carbon",
+  "version": "1.32.22-free.3",
+  "description": "CARBON Free — AI testing inside your coding agent. Eight Free workflows, all recorded findings and current-run reports. Internal business use permitted under PolyForm Perimeter.",
+  "author": {
+    "name": "testers.ai",
+    "url": "https://testers.ai"
+  },
+  "homepage": "https://testers.ai/carbon/",
+  "license": "PolyForm-Perimeter-1.0.0",
+  "keywords": [
+    "testing",
+    "quality",
+    "carbon"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "CARBON Free",
+    "shortDescription": "Find bugs inside your AI coding agent",
+    "longDescription": "CARBON Free — AI testing inside your coding agent. Eight Free workflows, all recorded findings and current-run reports. Internal business use permitted under PolyForm Perimeter.",
+    "developerName": "testers.ai",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write",
+      "Visualization"
+    ],
+    "websiteURL": "https://testers.ai/carbon/",
+    "defaultPrompt": [
+      "Use /carbon to assess this project and report the evidence."
+    ],
+    "brandColor": "#111815",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png"
+  },
+  "repository": "https://github.com/jarbon/carbon-free"
+}
