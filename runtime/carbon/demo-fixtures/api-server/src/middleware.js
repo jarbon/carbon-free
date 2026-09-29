@@ -1,5 +1,7 @@
 // Middleware helpers: JSON body parsing, auth, response helpers, logging.
-const API_KEY = process.env.API_KEY || 'secret-dev-key';
+// Deliberately public fixture value. Never inherit a real user's API credentials.
+// This synthetic demo is for local evaluation, not production deployment.
+const API_KEY = 'secret-dev-key';
 const MAX_BODY_BYTES = 1024 * 100; // 100 KB
 
 export function sendJson(res, statusCode, payload) {

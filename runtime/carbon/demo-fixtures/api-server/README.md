@@ -34,7 +34,9 @@ All request/response bodies are JSON.
 | GET    | `/stats`         | counts by genre, average price |
 
 Write operations require header `X-API-Key: secret-dev-key` (see
-`src/middleware.js`; override with env var `API_KEY`).
+`src/middleware.js`). This is a public synthetic fixture credential, not a secret.
+The demo deliberately does not read API credentials from the user's environment.
+Use this fixture locally only; it is not a production authentication system.
 
 ### Book shape
 
