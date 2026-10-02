@@ -10,7 +10,17 @@ provide sample data. Run `node tests/smoke.mjs .` for the isolated runtime check
 encodes them as data URLs, and embeds them in local HTML. It does not execute them.
 `tests/smoke.mjs` copies the icon into a temporary synthetic project to verify the
 screenshot export path. `references/specialists.json` supplies local portrait paths.
-The reports show specialist portraits in grayscale with an AI label.
+Current reports show role-based WebP icons with an AI label, including Jay's
+J-shaped icon. Dark and light assets are bundled. Legacy PNG assets remain in
+the package for compatibility but are no longer the current specialist profiles.
+
+## Update 1.32.22-free.5
+
+This release imports the October 1 Jay and role-icon update plus command, MCP,
+and sub-agent documentation. It preserves the previously reviewed isolated demo
+credential handling, MCP safety annotations, Light listing metadata, and limits on
+unsolicited upgrade promotions. No new service, telemetry destination, permission,
+Pro implementation, or private benchmark data is added.
 
 The initial directory validation also reported a download-and-execute pattern and
 large printable text in `assets/specialists/nia-gray.png`. A PNG chunk inspection

@@ -1,222 +1,369 @@
 {
   "schema": "carbon.specialists/v2",
-  "avatarPolicy": "Use only the bundled grayscale avatar, force grayscale at render time, and always pair a displayed portrait with a visible AI identity badge in reports and host chat surfaces.",
+  "avatarPolicy": "Use bundled transparent testing-role icons, preserve the full silhouette with object-fit:contain, and display an AI badge. Use role labels, never specialist personal names. Internal IDs are stable compatibility keys, not display names. Light icons are for dark surfaces; avatarDark is for light surfaces.",
   "specialists": [
     {
       "id": "sharon",
-      "name": "Sharon",
-      "title": "Security Tester",
+      "name": "Security sub-agent",
+      "title": "Security sub-agent",
       "focus": "Security",
       "bio": "Web-application security specialist focused on authentication, authorization, session safety, exposed data, dependencies, and practical vulnerability evidence.",
-      "checks": ["security", "authentication", "authorization", "sessions", "secrets"],
-      "avatar": "assets/specialists/sharon-gray.jpg"
+      "checks": [
+        "security",
+        "authentication",
+        "authorization",
+        "sessions",
+        "secrets"
+      ],
+      "avatar": "assets/specialists/security-light.webp",
+      "avatarDark": "assets/specialists/security-dark.webp"
     },
     {
       "id": "marcus",
-      "name": "Marcus",
-      "title": "OWASP Security Tester",
+      "name": "OWASP sub-agent",
+      "title": "OWASP sub-agent",
       "focus": "OWASP",
       "bio": "OWASP-focused security specialist who challenges access control, injection, insecure design, misconfiguration, vulnerable components, integrity, logging, and SSRF risks.",
-      "checks": ["security", "owasp", "networking", "api"],
-      "avatar": "assets/specialists/marcus-gray.jpg"
+      "checks": [
+        "security",
+        "owasp",
+        "networking",
+        "api"
+      ],
+      "avatar": "assets/specialists/owasp-light.webp",
+      "avatarDark": "assets/specialists/owasp-dark.webp"
     },
     {
       "id": "alejandro",
-      "name": "Alejandro",
-      "title": "Accessibility Tester",
+      "name": "Accessibility sub-agent",
+      "title": "Accessibility sub-agent",
       "focus": "Accessibility",
       "bio": "Accessibility specialist focused on keyboard use, assistive technology, inclusive interactions, responsive access, labels, feedback, and barriers affecting disabled users.",
-      "checks": ["accessibility", "a11y", "keyboard", "assistive-technology"],
-      "avatar": "assets/specialists/alejandro-gray.jpg"
+      "checks": [
+        "accessibility",
+        "a11y",
+        "keyboard",
+        "assistive-technology"
+      ],
+      "avatar": "assets/specialists/accessibility-light.webp",
+      "avatarDark": "assets/specialists/accessibility-dark.webp"
     },
     {
       "id": "hiroshi",
-      "name": "Hiroshi",
-      "title": "WCAG Compliance Tester",
+      "name": "WCAG sub-agent",
+      "title": "WCAG sub-agent",
       "focus": "WCAG",
       "bio": "WCAG specialist focused on criterion-level evidence across perceivable, operable, understandable, and robust behavior, without overstating automated scan results as conformance.",
-      "checks": ["accessibility", "a11y", "wcag", "conformance"],
-      "avatar": "assets/specialists/hiroshi-gray.jpg"
+      "checks": [
+        "accessibility",
+        "a11y",
+        "wcag",
+        "conformance"
+      ],
+      "avatar": "assets/specialists/wcag-light.webp",
+      "avatarDark": "assets/specialists/wcag-dark.webp"
     },
     {
       "id": "mia",
-      "name": "Mia",
-      "title": "Usability Tester",
+      "name": "Usability sub-agent",
+      "title": "Usability sub-agent",
       "focus": "Usability",
       "bio": "User-centered design and usability specialist focused on discoverability, task clarity, responsive behavior, interaction friction, visual hierarchy, and inclusive UX.",
-      "checks": ["usability", "ux", "ui", "compatibility", "localization"],
-      "avatar": "assets/specialists/mia-gray.jpg"
+      "checks": [
+        "usability",
+        "ux",
+        "ui",
+        "compatibility",
+        "localization"
+      ],
+      "avatar": "assets/specialists/usability-light.webp",
+      "avatarDark": "assets/specialists/usability-dark.webp"
     },
     {
       "id": "nia",
-      "name": "Nia",
-      "title": "Compatibility Tester",
+      "name": "Compatibility sub-agent",
+      "title": "Compatibility sub-agent",
       "focus": "Compatibility",
       "bio": "Compatibility specialist focused on browser, device, viewport, operating-system, assistive-technology, and support-matrix evidence, with explicit coverage gaps rather than assumed portability.",
-      "checks": ["compatibility", "cross-browser", "responsive", "devices", "assistive-technology"],
-      "avatar": "assets/specialists/nia-gray.png"
+      "checks": [
+        "compatibility",
+        "cross-browser",
+        "responsive",
+        "devices",
+        "assistive-technology"
+      ],
+      "avatar": "assets/specialists/compatibility-light.webp",
+      "avatarDark": "assets/specialists/compatibility-dark.webp"
     },
     {
       "id": "tariq",
-      "name": "Tariq",
-      "title": "Performance Tester",
+      "name": "Performance sub-agent",
+      "title": "Performance sub-agent",
       "focus": "Performance",
       "bio": "Performance specialist focused on user-visible latency, Core Web Vitals, payload and request cost, caching, API timing, scalability, mobile constraints, memory, and leaks.",
-      "checks": ["performance", "perf", "web-vitals", "networking", "reliability"],
-      "avatar": "assets/specialists/tariq-gray.jpg"
+      "checks": [
+        "performance",
+        "perf",
+        "web-vitals",
+        "networking",
+        "reliability"
+      ],
+      "avatar": "assets/specialists/performance-light.webp",
+      "avatarDark": "assets/specialists/performance-dark.webp"
     },
     {
       "id": "sophia",
-      "name": "Sophia",
-      "title": "Content Quality Tester",
+      "name": "Content sub-agent",
+      "title": "Content sub-agent",
       "focus": "Content",
       "bio": "Content and UX-writing specialist focused on page identity, clear copy, information architecture, credibility, navigation, status communication, readability, and content quality.",
-      "checks": ["content", "copy", "spelling", "seo", "ui"],
-      "avatar": "assets/specialists/sophia-gray.jpg"
+      "checks": [
+        "content",
+        "copy",
+        "spelling",
+        "seo",
+        "ui"
+      ],
+      "avatar": "assets/specialists/content-light.webp",
+      "avatarDark": "assets/specialists/content-dark.webp"
     },
     {
       "id": "lucia",
-      "name": "Lucía",
-      "title": "Localization Tester",
+      "name": "Localization sub-agent",
+      "title": "Localization sub-agent",
       "focus": "Localization",
       "bio": "Localization specialist focused on translation accuracy, locale formats, pluralization, truncation, bidirectional layout, cultural fit, regulatory copy, and recovery behavior across languages.",
-      "checks": ["localization", "i18n", "l10n", "rtl", "content"],
-      "avatar": "assets/specialists/lucia-gray.png"
+      "checks": [
+        "localization",
+        "i18n",
+        "l10n",
+        "rtl",
+        "content"
+      ],
+      "avatar": "assets/specialists/localization-light.webp",
+      "avatarDark": "assets/specialists/localization-dark.webp"
     },
     {
       "id": "arjun",
-      "name": "Arjun",
-      "title": "Data Integrity Tester",
-      "focus": "Data Integrity",
+      "name": "Data integrity sub-agent",
+      "title": "Data integrity sub-agent",
+      "focus": "Data integrity",
       "bio": "Data-integrity specialist focused on agreement between rendered values, APIs, events, schemas, exports, storage, calculations, retention, and downstream state.",
-      "checks": ["data", "data-integrity", "api", "events", "schemas"],
-      "avatar": "assets/specialists/arjun-gray.png"
+      "checks": [
+        "data",
+        "data-integrity",
+        "api",
+        "events",
+        "schemas"
+      ],
+      "avatar": "assets/specialists/data-integrity-light.webp",
+      "avatarDark": "assets/specialists/data-integrity-dark.webp"
     },
     {
       "id": "richard",
-      "name": "Richard",
-      "title": "Forms Tester",
+      "name": "Forms sub-agent",
+      "title": "Forms sub-agent",
       "focus": "Forms",
       "bio": "Forms specialist focused on input contracts, validation, boundaries, state, submission, recovery, data quality, conversion barriers, and accessible interaction.",
-      "checks": ["forms", "form", "functionality", "data"],
-      "avatar": "assets/specialists/richard-gray.jpg"
+      "checks": [
+        "forms",
+        "form",
+        "functionality",
+        "data"
+      ],
+      "avatar": "assets/specialists/forms-light.webp",
+      "avatarDark": "assets/specialists/forms-dark.webp"
     },
     {
       "id": "fatima",
-      "name": "Fatima",
-      "title": "Error Message Tester",
+      "name": "Error UX sub-agent",
+      "title": "Error UX sub-agent",
       "focus": "Error UX",
       "bio": "Error and recovery specialist focused on truthful status, clear messages, consistent severity, actionable recovery, safe logs, failure loops, and user trust.",
-      "checks": ["error-ux", "errors", "ux", "functionality", "reliability"],
-      "avatar": "assets/specialists/fatima-gray.jpg"
+      "checks": [
+        "error-ux",
+        "errors",
+        "ux",
+        "functionality",
+        "reliability"
+      ],
+      "avatar": "assets/specialists/error-ux-light.webp",
+      "avatarDark": "assets/specialists/error-ux-dark.webp"
     },
     {
       "id": "mei",
-      "name": "Mei",
-      "title": "Search Box Tester",
+      "name": "Search sub-agent",
+      "title": "Search sub-agent",
       "focus": "Search",
       "bio": "Search-interface specialist focused on discoverability, query handling, suggestions, empty states, input accessibility, relevance feedback, and resilient result navigation.",
-      "checks": ["search", "functionality"],
-      "avatar": "assets/specialists/mei-gray.jpg"
+      "checks": [
+        "search",
+        "functionality"
+      ],
+      "avatar": "assets/specialists/search-light.webp",
+      "avatarDark": "assets/specialists/search-dark.webp"
     },
     {
       "id": "zara",
-      "name": "Zara",
-      "title": "News Content Tester",
-      "focus": "News / Content",
+      "name": "News & content sub-agent",
+      "title": "News & content sub-agent",
+      "focus": "News & content",
       "bio": "Digital publishing specialist focused on article identity, readability, supporting media, metadata, context, advertising boundaries, and multi-device content behavior.",
-      "checks": ["publishing", "news", "content"],
-      "avatar": "assets/specialists/zara-gray.jpg"
+      "checks": [
+        "publishing",
+        "news",
+        "content"
+      ],
+      "avatar": "assets/specialists/news-content-light.webp",
+      "avatarDark": "assets/specialists/news-content-dark.webp"
     },
     {
       "id": "yuki",
-      "name": "Yuki",
-      "title": "Homepage and Landing Page Tester",
-      "focus": "Landing Pages",
+      "name": "Landing pages sub-agent",
+      "title": "Landing pages sub-agent",
+      "focus": "Landing pages",
       "bio": "First-impression and conversion specialist focused on value clarity, trust, navigation, calls to action, responsive composition, dead ends, and page credibility.",
-      "checks": ["landing-page", "landing", "ui", "ux"],
-      "avatar": "assets/specialists/yuki-gray.jpg"
+      "checks": [
+        "landing-page",
+        "landing",
+        "ui",
+        "ux"
+      ],
+      "avatar": "assets/specialists/landing-pages-light.webp",
+      "avatarDark": "assets/specialists/landing-pages-dark.webp"
     },
     {
       "id": "hassan",
-      "name": "Hassan",
-      "title": "Checkout Tester",
+      "name": "Checkout sub-agent",
+      "title": "Checkout sub-agent",
       "focus": "Checkout",
       "bio": "Checkout and payment specialist focused on order accuracy, address and payment input, trust, retry safety, pricing truth, completion, and conversion-blocking failures.",
-      "checks": ["checkout", "ecommerce", "payment", "functionality"],
-      "avatar": "assets/specialists/hassan-gray.jpg"
+      "checks": [
+        "checkout",
+        "ecommerce",
+        "payment",
+        "functionality"
+      ],
+      "avatar": "assets/specialists/checkout-light.webp",
+      "avatarDark": "assets/specialists/checkout-dark.webp"
     },
     {
       "id": "priya",
-      "name": "Priya",
-      "title": "Shopping Cart Tester",
-      "focus": "Shopping Cart",
+      "name": "Shopping cart sub-agent",
+      "title": "Shopping cart sub-agent",
+      "focus": "Shopping cart",
       "bio": "Shopping-cart specialist focused on line-item state, quantities, promotions, totals, inventory changes, persistence, accessibility, and safe transition to checkout.",
-      "checks": ["cart", "shopping-cart", "ecommerce", "functionality"],
-      "avatar": "assets/specialists/priya-gray.jpg"
+      "checks": [
+        "cart",
+        "shopping-cart",
+        "ecommerce",
+        "functionality"
+      ],
+      "avatar": "assets/specialists/shopping-cart-light.webp",
+      "avatarDark": "assets/specialists/shopping-cart-dark.webp"
     },
     {
       "id": "mateo",
-      "name": "Mateo",
-      "title": "Pricing Page Tester",
-      "focus": "Pricing Pages",
+      "name": "Pricing sub-agent",
+      "title": "Pricing sub-agent",
+      "focus": "Pricing",
       "bio": "Pricing and subscription specialist focused on plan clarity, comparison, currency and locale, hidden conditions, billing cadence, conversion paths, and truthful claims.",
-      "checks": ["pricing", "localization"],
-      "avatar": "assets/specialists/mateo-gray.jpg"
+      "checks": [
+        "pricing",
+        "localization"
+      ],
+      "avatar": "assets/specialists/pricing-light.webp",
+      "avatarDark": "assets/specialists/pricing-dark.webp"
     },
     {
       "id": "pete",
-      "name": "Pete",
-      "title": "Privacy Tester",
-      "focus": "Privacy / PII",
+      "name": "Privacy sub-agent",
+      "title": "Privacy sub-agent",
+      "focus": "Privacy",
       "bio": "Privacy specialist focused on personal-data exposure, consent, tracking, collection minimization, storage and transfer, debug leakage, user expectations, and AI-specific privacy risks.",
-      "checks": ["privacy", "pii", "ccpa", "data"],
-      "avatar": "assets/specialists/pete-gray.jpg"
+      "checks": [
+        "privacy",
+        "pii",
+        "ccpa",
+        "data"
+      ],
+      "avatar": "assets/specialists/privacy-light.webp",
+      "avatarDark": "assets/specialists/privacy-dark.webp"
     },
     {
       "id": "zanele",
-      "name": "Zanele",
-      "title": "GDPR Compliance Tester",
+      "name": "GDPR sub-agent",
+      "title": "GDPR sub-agent",
       "focus": "GDPR",
       "bio": "GDPR specialist focused on lawful consent, personal-data exposure, international transfer, minimization, retention, security, data-subject rights, transparency, and accountability.",
-      "checks": ["privacy", "gdpr", "data", "compliance"],
-      "avatar": "assets/specialists/zanele-gray.jpg"
+      "checks": [
+        "privacy",
+        "gdpr",
+        "data",
+        "compliance"
+      ],
+      "avatar": "assets/specialists/gdpr-light.webp",
+      "avatarDark": "assets/specialists/gdpr-dark.webp"
     },
     {
       "id": "rajesh",
-      "name": "Rajesh",
-      "title": "Cookie Consent Management Tester",
-      "focus": "Cookie Consent",
+      "name": "Cookie consent sub-agent",
+      "title": "Cookie consent sub-agent",
+      "focus": "Cookie consent",
       "bio": "Cookie-consent specialist focused on prior consent, purpose and vendor choices, reject symmetry, preference persistence, withdrawal, tracking verification, and regional behavior.",
-      "checks": ["privacy", "cookie-consent", "cookies"],
-      "avatar": "assets/specialists/rajesh-gray.jpg"
+      "checks": [
+        "privacy",
+        "cookie-consent",
+        "cookies"
+      ],
+      "avatar": "assets/specialists/cookie-consent-light.webp",
+      "avatarDark": "assets/specialists/cookie-consent-dark.webp"
     },
     {
       "id": "sundar",
-      "name": "Sundar",
-      "title": "Legal Policies Tester",
-      "focus": "Legal Policy",
+      "name": "Legal policy sub-agent",
+      "title": "Legal policy sub-agent",
+      "focus": "Legal policy",
       "bio": "Policy-content specialist focused on discoverability, internal consistency, versioning, contact details, user rights, actual-product alignment, accessibility, and credible presentation.",
-      "checks": ["privacy", "legal", "policy"],
-      "avatar": "assets/specialists/sundar-gray.jpg"
+      "checks": [
+        "privacy",
+        "legal",
+        "policy"
+      ],
+      "avatar": "assets/specialists/legal-policy-light.webp",
+      "avatarDark": "assets/specialists/legal-policy-dark.webp"
     },
     {
       "id": "jason",
-      "name": "Jason",
-      "title": "GenAI Code Tester",
-      "focus": "AI Code Review",
+      "name": "AI-generated code sub-agent",
+      "title": "AI-generated code sub-agent",
+      "focus": "AI-generated code",
       "bio": "AI-generated-code specialist focused on logic, boundaries, null and empty states, failure handling, API use, security, privacy, tests, code smells, state, and misleading AI shortcuts.",
-      "checks": ["ai-code", "vibe-coding", "code-review", "functionality", "data", "api"],
-      "avatar": "assets/specialists/jason-gray.jpg"
+      "checks": [
+        "ai-code",
+        "vibe-coding",
+        "code-review",
+        "functionality",
+        "data",
+        "api"
+      ],
+      "avatar": "assets/specialists/ai-generated-code-light.webp",
+      "avatarDark": "assets/specialists/ai-generated-code-dark.webp"
     },
     {
       "id": "diego",
-      "name": "Diego",
-      "title": "AI Chatbot Tester",
-      "focus": "AI Chatbot",
+      "name": "AI chatbot sub-agent",
+      "title": "AI chatbot sub-agent",
+      "focus": "AI chatbot",
       "bio": "Conversational-AI specialist focused on task success, conversation quality, state, memory, recovery, privacy, safety, injection, tools, latency, integration, and nondeterminism.",
-      "checks": ["ai-chatbot", "chatbot", "functionality", "api"],
-      "avatar": "assets/specialists/diego-gray.jpg"
+      "checks": [
+        "ai-chatbot",
+        "chatbot",
+        "functionality",
+        "api"
+      ],
+      "avatar": "assets/specialists/ai-chatbot-light.webp",
+      "avatarDark": "assets/specialists/ai-chatbot-dark.webp"
     }
   ]
 }

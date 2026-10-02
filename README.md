@@ -1,4 +1,4 @@
-# CARBON Free
+# CARBON Light
 
 AI testing inside your coding agent. Built by [testers.ai](https://testers.ai).
 
@@ -6,6 +6,15 @@ CARBON gives your coding agent risk-based testing instructions and a local evide
 runtime. The agent inspects your authorized project, runs checks using its available
 browser, terminal or API tools, and records findings in a live report. CARBON's MCP
 server does not independently run the investigation or manufacture results.
+
+## New in 1.32.22-free.5
+
+Jay, the AI test manager, now introduces the assessment and appears in reports.
+Specialist profiles use role-based names and new light/dark icon identities rather
+than human names and photographs. They remain AI perspectives, not human reviewers.
+See the [AI testing team](SUB-AGENTS.md), [visual profile gallery](sub-agents.html),
+[command guide](COMMANDS.md), and [MCP tool reference](MCP_SERVER.md).
+The eight-command scope, license, data handling and permission boundaries are unchanged.
 
 ## Eight workflows
 
