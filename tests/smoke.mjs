@@ -29,6 +29,10 @@ try{
  let snapshot=await fetch(base+'/snapshot?session='+session,{headers:{Authorization:'Bearer '+token}});assert.equal(snapshot.status,200);assert.ok(!(await snapshot.text()).includes('Confidence in the tested scope'));
  await bad('carbon_update',{root,runId:start.runId,status:'completed'});
  await bad('carbon_update',{root,runId:start.runId,checks:[{id:'x',status:'passed'}]});
+ await bad('carbon_update',{root,runId:start.runId,journeys:[{id:'path',title:'Recorded path',steps:[{title:'Save',status:'passed'}]}]});
+ await tool('carbon_update',{root,runId:start.runId,journeys:[{id:'path',title:'Recorded path',steps:[{title:'Save',status:'passed',evidence:'Synthetic saved confirmation'}]}]});
+ const persisted=JSON.parse(fs.readFileSync(path.join(root,'.carbon/free/runs',start.runId,'state.json'),'utf8'));
+ assert.equal(persisted.journeys[0].steps[0].status,'passed');
  const img=path.join(root,'evidence.png');fs.copyFileSync(path.join(plugin,'assets/icon.png'),img);
  await tool('carbon_update',{root,runId:start.runId,current:'Checked recovery',why:'Saved work must survive reload',checks:[{id:'x',status:'failed',actual:'Value lost after reload',evidence:'Synthetic fixture assertion',page:'p'}],findings:[{title:'<script>alert(1)</script>',consequence:'Lost work',steps:'Save then reload',evidence:'Fixture assertion',strength:'demonstrated',remediation:'Persist the value',verification:'Repeat save/reload',page:'p'}],pages:[{id:'p',title:'Synthetic screen',screenshot:img}],personas:[{id:'user',specialist:'jason',intent:'Keep work',journey:'Saved and reloaded',reaction:'Synthetic persona saw lost state',evidence:'Fixture assertion'}],confidence:{score:35,scope:'One synthetic state check',rationale:'The only tested journey failed',limitations:'Not an app-quality estimate'},status:'completed'});
  const opened=await tool('carbon_report',{root,runId:start.runId,view:'map'});const html=fs.readFileSync(opened.htmlPath,'utf8');assert.ok(html.includes('data:image/png;base64'));assert.ok(html.includes('data-panel="map"'));assert.ok(html.includes('&lt;script&gt;alert(1)'));assert.ok(!html.includes('<script>alert(1)'));assert.ok(!html.includes(token));

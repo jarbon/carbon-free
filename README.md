@@ -7,7 +7,20 @@ runtime. The agent inspects your authorized project, runs checks using its avail
 browser, terminal or API tools, and records findings in a live report. CARBON's MCP
 server does not independently run the investigation or manufacture results.
 
-## New in 1.32.22-free.5
+## New in 1.32.22-free.7
+
+Four compact report views help you move from a decision to its evidence:
+
+- **Release Brief:** findings, next actions and outcomes for the selected checks.
+- **Evidence Lens:** page screenshots linked to checks, reproduction and fixes.
+- **Journey Atlas:** recorded paths and step outcomes, without invented connections.
+- **Live Investigation:** the current check, its purpose and recent activity.
+
+Zoom screenshots, keep the full record one click away, and export portable HTML/JSON.
+Live reports retain their last good snapshot and quietly reconnect after interruption.
+Unknown and deferred checks remain distinct from passing checks.
+
+## Role-based AI testing team
 
 Jay, the AI test manager, now introduces the assessment and appears in reports.
 Specialist profiles use role-based names and new light/dark icon identities rather

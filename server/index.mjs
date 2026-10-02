@@ -87,7 +87,7 @@ async function viewer(root,run,mode='report'){
 const str={type:'string'},obj={type:'object'},arr={type:'array',items:obj};
 const definitions=[
  ['carbon_start','Start a bounded Free assessment. Returns a live report URL; does not open the browser or execute tests itself.',{root:str,command:{type:'string',enum:commands.map(c=>c.name)},title:str,target:str,checks:arr},['root','command','title']],
- ['carbon_update','Record actual checks, findings, pages, persona journeys, blockers and confidence for one run. Merge by IDs; no findings are hidden.',{root:str,runId:str,current:str,why:str,summary:str,status:{type:'string',enum:['running',...terminal]},checks:arr,findings:arr,pages:arr,personas:arr,blockers:{type:'array',items:str},confidence:obj},['root','runId']],
+ ['carbon_update','Record actual checks, findings, pages, persona journeys, blockers and confidence for one run. Merge by IDs; no findings are hidden.',{root:str,runId:str,current:str,why:str,summary:str,status:{type:'string',enum:['running',...terminal]},checks:arr,findings:arr,pages:arr,journeys:arr,personas:arr,blockers:{type:'array',items:str},confidence:obj},['root','runId']],
  ['carbon_report','Reopen a saved report or current-run map; returns portable HTML and JSON paths.',{root:str,runId:str,view:{type:'string',enum:['report','map']}},['root','runId']],
  ['carbon_settings','Read or update local preferences and global analytics opt-out; returns a local settings UI.',{root:str,patch:obj},['root']],
  ['carbon_demo','List or create a fresh disposable demo; never overwrites an existing project.',{root:str,action:{type:'string',enum:['list','create']},fixture:str,destination:str,testProfile:{type:'string',enum:['without-existing-tests','with-existing-tests']}},['root','action']],
@@ -107,10 +107,11 @@ async function call(name,a){
  if(name==='carbon_update'){
   const state=load(root,a.runId);if(terminal.has(state.status))throw Error('Run is closed; start a new assessment, preserving this evidence');
   for(const k of ['current','why','summary'])if(k in a)state[k]=clean(a[k]);
-  const merge=(key,rows)=>{const map=new Map(state[key].map(v=>[v.id,v]));for(const v of rows)map.set(v.id,v);state[key]=[...map.values()]};
+  const merge=(key,rows)=>{const map=new Map((state[key]||[]).map(v=>[v.id,v]));for(const v of rows)map.set(v.id,v);state[key]=[...map.values()]};
   if(a.checks)merge('checks',a.checks.map((c,i)=>normalizeCheck({...state.checks.find(x=>x.id===c.id),...c},i)));
   if(a.findings)merge('findings',a.findings.map(normalizeFinding));
   if(a.pages)merge('pages',a.pages.map(p=>normalizePage(root,p)));
+  if(a.journeys)merge('journeys',a.journeys.slice(0,100).map(j=>{object(j);if(!j.id||!j.title||!Array.isArray(j.steps))throw Error('Journey requires id, title, and ordered steps');return {id:clean(j.id,80),title:clean(j.title,500),intent:clean(j.intent),steps:j.steps.slice(0,100).map(s=>{object(s);if(['passed','failed'].includes(s.status)&&!String(s.evidence||'').trim())throw Error('Journey outcomes require recorded evidence');return {title:clean(s.title,500),page:clean(s.page,2000),status:allowedStatus.has(s.status)?s.status:'unrecorded',evidence:clean(s.evidence)}})}}));
   if(a.personas)merge('personas',a.personas.map(p=>({id:clean(p.id||crypto.randomBytes(6).toString('hex'),80),specialist:clean(p.specialist||'jason',80),intent:clean(p.intent),journey:clean(p.journey),reaction:clean(p.reaction),evidence:clean(p.evidence)})));
   if(a.blockers)state.blockers=a.blockers.map(x=>clean(x));
   if(a.confidence){const c=object(a.confidence);if(!c.rationale||!c.scope)throw Error('Confidence requires scope and rationale');if(c.score!==undefined&&(!Number.isFinite(c.score)||c.score<0||c.score>100))throw Error('Score must be between 0 and 100');state.confidence={...(c.score!==undefined?{score:c.score}:{}),scope:clean(c.scope),rationale:clean(c.rationale),limitations:clean(c.limitations)};}

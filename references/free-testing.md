@@ -57,6 +57,13 @@ or page.url to associate the captured screen with its observations.
 Confidence is optional: scope and rationale are required, limitations encouraged,
 score 0–100 only when defensible. No token/cost placeholders or unmeasured metrics.
 
+Record actual ordered journeys in carbon_update.journeys when useful. Each has
+id, title, optional intent, and steps. A step has title, optional page (page.id or
+page.url), status and evidence. Passed/failed steps require evidence. Use stable
+journey IDs for updates; never infer a transition that was not observed.
+The report provides Release Brief, Evidence Lens, Journey Atlas and Live
+Investigation views. Omitted data stays omitted, not a successful outcome.
+
 `carbon_report` reopens report or map for root/runId and returns HTML/JSON export
 paths. They remain usable after the MCP process closes; the protected live URL does not.
 Free Map represents one assessment; it does not compare builds or retain steering.

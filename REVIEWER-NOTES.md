@@ -15,6 +15,21 @@ J-shaped icon. Dark and light assets are bundled. Unreferenced legacy portraits
 are excluded from this release, with originals preserved outside the package.
 Retained images are byte-for-byte unchanged, including provenance metadata.
 
+## Update 1.32.22-free.7
+
+The existing local report now offers Release Brief, Evidence Lens, Journey Atlas,
+and Live Investigation views. The two new ui/report-workspace files are readable,
+bundled JavaScript/CSS, inlined into portable reports. They make no network requests.
+The journey input records ordered steps with evidence; it does not execute tests.
+Unexecuted/unknown checks are not displayed as passes. Missing panels are hidden.
+Screenshot zoom preserves focus and live updates preserve the last good snapshot.
+The current evidence remains available as HTML/JSON exports and an expanded record.
+
+No new services, destinations, permissions, dependencies, Pro code, or benchmark data.
+Existing image provenance, isolated demo environment, eight skills, MCP annotations,
+and existing consent boundaries are preserved. No automated upgrade advertisements.
+Run node tests/report-workspace.mjs in addition to the existing smoke/safety checks.
+
 ## Update 1.32.22-free.6
 
 Only the 50 specialist/manager assets referenced by the current catalogs are

@@ -34,5 +34,5 @@ for(const key of ['API_KEY','OPENAI_API_KEY','AWS_SECRET_ACCESS_KEY','HTTPS_PROX
 assert.equal(observed.isolated,1);assert.equal(observed.no_user_site,1);assert.equal(observed.no_bytecode,true);
 const manifests=['package.json','server/package.json','.claude-plugin/plugin.json','.codex-plugin/plugin.json','EDITION.json']
   .filter(f=>fs.existsSync(path.join(root,f))).map(f=>JSON.parse(fs.readFileSync(path.join(root,f))).version);
-assert.ok(manifests.every(v=>v==='1.32.22-free.6'));
+assert.ok(manifests.every(v=>v==='1.32.22-free.7'));
 console.log(JSON.stringify({passed:true,retainedImages:refs.size,isolatedPython:true,credentialInheritance:false,versions:manifests}));
