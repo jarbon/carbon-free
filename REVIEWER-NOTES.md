@@ -11,8 +11,24 @@ encodes them as data URLs, and embeds them in local HTML. It does not execute th
 `tests/smoke.mjs` copies the icon into a temporary synthetic project to verify the
 screenshot export path. `references/specialists.json` supplies local portrait paths.
 Current reports show role-based WebP icons with an AI label, including Jay's
-J-shaped icon. Dark and light assets are bundled. Legacy PNG assets remain in
-the package for compatibility but are no longer the current specialist profiles.
+J-shaped icon. Dark and light assets are bundled. Unreferenced legacy portraits
+are excluded from this release, with originals preserved outside the package.
+Retained images are byte-for-byte unchanged, including provenance metadata.
+
+## Update 1.32.22-free.6
+
+Only the 50 specialist/manager assets referenced by the current catalogs are
+bundled. The obsolete legacy portraits are not needed by current reports.
+The demo-copy subprocess now receives an explicit platform-variable allowlist,
+not the host environment. Python runs with -I -B: no user site packages,
+PYTHONPATH injection, or bytecode writes. No API keys, access tokens, cloud
+credentials or proxy variables are forwarded by this helper.
+
+The scanner's UNREAD_ASSET_REFERENCED references point to image rendering,
+catalog paths, documentation, and an image export test, not execution of images.
+server/view.mjs uses fs.readFileSync plus a data:image URL in an img tag.
+The subprocess executes only the bundled carbon_demo.py script. We request
+human review if the preserved, referenced image assets still require it.
 
 ## Update 1.32.22-free.5
 
@@ -22,11 +38,9 @@ credential handling, MCP safety annotations, Light listing metadata, and limits 
 unsolicited upgrade promotions. No new service, telemetry destination, permission,
 Pro implementation, or private benchmark data is added.
 
-The initial directory validation also reported a download-and-execute pattern and
-large printable text in `assets/specialists/nia-gray.png`. A PNG chunk inspection
-found an IHDR, a caBX content-credentials chunk, IDAT image chunks and IEND. The
-runtime treats this file only as image data. We have retained the asset for human
-review rather than treating the scanner's warning as approval or running its bytes.
+The previous release's unused legacy portrait was flagged for embedded text.
+It is no longer distributed because the current role-icon catalog supersedes it.
+We did not strip or rewrite provenance to conceal content from the reviewer.
 
 ## Credentials and network
 

@@ -20,8 +20,9 @@ try{
  const skill=await rpc('prompts/get',{name:'carbon-issues'});assert.ok(skill.result.messages[0].content.text.includes('50%'));
  assert.ok(!skill.result.messages[0].content.text.includes('https://testers.ai/carbon/#pro'));
  const listing=await tool('carbon_demo',{root,action:'list'});assert.equal(listing.fixtures.length,4);
- for(const profile of ['with-existing-tests','without-existing-tests'])await tool('carbon_demo',{root,action:'create',fixture:'web-static',testProfile:profile,destination:profile});
- await bad('carbon_demo',{root,action:'create',fixture:'web-static',destination:'with-existing-tests'});
+ for(const fixture of listing.fixtures) for(const profile of ['with-existing-tests','without-existing-tests'])
+  await tool('carbon_demo',{root,action:'create',fixture:fixture.id,testProfile:profile,destination:fixture.id+'-'+profile});
+ await bad('carbon_demo',{root,action:'create',fixture:'web-static',destination:'web-static-with-existing-tests'});
  const start=await tool('carbon_start',{root,command:'carbon',title:'Free synthetic assessment',checks:[{id:'x',title:'State round-trip',lane:'stateful',risk:'Loss of work'}]});
  const url=new URL(start.url),token=url.hash.slice(1),base=url.origin,session=url.searchParams.get('session');
  assert.equal((await fetch(base+'/snapshot?session='+session)).status,403);

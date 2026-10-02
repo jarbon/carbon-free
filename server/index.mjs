@@ -6,6 +6,7 @@ import crypto from 'node:crypto';
 import readline from 'node:readline';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
+import {demoEnvironment} from './demo-environment.mjs';
 import {homedir} from 'node:os';
 import {trackFathomEvent, eventForCommandStart, analyticsEnabled} from './fathom-analytics.mjs';
 import {render} from './view.mjs';
@@ -120,7 +121,7 @@ async function call(name,a){
  if(name==='carbon_settings')return {settings:a.patch?setPreferences(root,a.patch):{...preferences(root),analyticsEnabled:analyticsEnabled()},url:await viewer(root,null,'settings')};
  if(name==='carbon_demo'){
   const script=path.join(plugin,'runtime/carbon/scripts/carbon_demo.py');const args=a.action==='list'?['list']:['create','--root',root,'--fixture',a.fixture||'web-static','--test-profile',a.testProfile||'without-existing-tests',...(a.destination?['--destination',a.destination]:[])];
-  return JSON.parse(execFileSync('python3',[script,...args],{encoding:'utf8',timeout:30000,env:{...process.env,PYTHONDONTWRITEBYTECODE:'1'}}));
+  return JSON.parse(execFileSync('python3',['-I','-B',script,...args],{encoding:'utf8',timeout:30000,env:demoEnvironment()}));
  }
  throw Error('Tool not available in CARBON Free');
 }
