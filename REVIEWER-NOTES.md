@@ -1,8 +1,20 @@
 # Directory reviewer notes
 
-This Free-only source bundle contains eight skills and one local stdio MCP server.
+This Light-only source bundle contains eight testing workflows, two conversational
+aliases (`j` and `jay`), and one local stdio MCP server.
 No CARBON service login or test account is required; four synthetic demo fixtures
 provide sample data. Run `node tests/smoke.mjs .` for the isolated runtime checks.
+
+## Update 1.32.22-free.9
+
+The directory display name is now Testers.ai CARBON Test Harness. The stable
+plugin identifier remains `carbon`, preserving existing command namespaces.
+The description explains software testing and quality assurance, the eight
+Light workflows, and the distinction between executed tests and untested work.
+The latest source also includes the previously prepared Jay conversational
+aliases and empty-target clarification. No Pro workflows or benchmark data are
+included. The existing license, network destinations and permission boundaries
+are unchanged.
 
 ## Image-related policy holds
 

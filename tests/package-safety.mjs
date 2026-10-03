@@ -34,5 +34,10 @@ for(const key of ['API_KEY','OPENAI_API_KEY','AWS_SECRET_ACCESS_KEY','HTTPS_PROX
 assert.equal(observed.isolated,1);assert.equal(observed.no_user_site,1);assert.equal(observed.no_bytecode,true);
 const manifests=['package.json','server/package.json','.claude-plugin/plugin.json','.codex-plugin/plugin.json','EDITION.json']
   .filter(f=>fs.existsSync(path.join(root,f))).map(f=>JSON.parse(fs.readFileSync(path.join(root,f))).version);
-assert.ok(manifests.every(v=>v==='1.32.22-free.7'));
+assert.ok(manifests.every(v=>v==='1.32.22-free.9'));
+const claude=JSON.parse(fs.readFileSync(path.join(root,'.claude-plugin/plugin.json')));
+assert.equal(claude.name,'carbon','Keep existing command namespace');
+assert.equal(claude.displayName,'Testers.ai CARBON Test Harness');
+assert.match(claude.description,/test harness/);
+assert.match(claude.description,/quality reports/);
 console.log(JSON.stringify({passed:true,retainedImages:refs.size,isolatedPython:true,credentialInheritance:false,versions:manifests}));

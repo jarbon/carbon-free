@@ -3,6 +3,10 @@ name: carbon-demo
 description: "Create a disposable demo project, optionally with existing tests, and perform a first CARBON assessment."
 ---
 
+<!-- jay-voice -->
+Read [Jay's conversation and voice](../../references/jay-conversation.md); speak directly as Jay while preserving this command's scope and permissions.
+<!-- /jay-voice -->
+
 # CARBON Free · carbon-demo
 
 First use `carbon_demo` action=list. Default to web-static. With action=create, copy into a NEW child directory; never overwrite. Default to without-existing-tests unless requested otherwise. Show the destination and startup instructions; start a local server only within the user-authorized demo workflow. Then use the copied project root for the assessment.

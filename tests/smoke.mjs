@@ -15,7 +15,7 @@ try{
  const init=await rpc('initialize');assert.equal(init.result.serverInfo.name,'carbon-free');
  const tools=(await rpc('tools/list')).result.tools;assert.equal(tools.length,6);
  for(const t of tools){assert.equal(typeof t.annotations.title,'string');for(const k of ['readOnlyHint','destructiveHint','idempotentHint','openWorldHint'])assert.equal(typeof t.annotations[k],'boolean')}
- const names=(await rpc('prompts/list')).result.prompts.map(p=>p.name);assert.equal(names.length,8);assert.ok(!names.includes('carbon-auto'));
+ const names=(await rpc('prompts/list')).result.prompts.map(p=>p.name);assert.equal(names.length,10);assert.ok(names.includes('j')&&names.includes('jay'));assert.ok(!names.includes('carbon-auto'));
  await bad('carbon_auto',{root});assert.ok((await rpc('prompts/get',{name:'carbon-forever'})).error);
  const skill=await rpc('prompts/get',{name:'carbon-issues'});assert.ok(skill.result.messages[0].content.text.includes('50%'));
  assert.ok(!skill.result.messages[0].content.text.includes('https://testers.ai/carbon/#pro'));

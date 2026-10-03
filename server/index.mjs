@@ -135,7 +135,7 @@ async function dispatch(m){
   try{return {content:[{type:'text',text:JSON.stringify(await call(m.params.name,m.params.arguments||{}))}]}}catch(e){return {isError:true,content:[{type:'text',text:clean(e.message,1000)}]}}
  }
  if(m.method==='prompts/list')return {prompts:commands.map(c=>({name:c.name,description:c.description,arguments:[{name:'request',description:'Target or testing scope',required:false}]}))};
- if(m.method==='prompts/get'){const c=commands.find(c=>c.name===m.params.name);if(!c)throw Error('Unknown Free command');return {messages:[{role:'user',content:{type:'text',text:fs.readFileSync(path.join(plugin,'skills',c.name,'SKILL.md'),'utf8')+'\nUser scope: '+clean(m.params.arguments?.request)}}]}}
+ if(m.method==='prompts/get'){/* Jay conversational prompt entrypoints */ const promptName=m.params.name==='J'?'j':m.params.name;const c=commands.find(c=>c.name===promptName);if(!c)throw Error('Unknown Free command');return {messages:[{role:'user',content:{type:'text',text:fs.readFileSync(path.join(plugin,'references','jay-conversation.md'),'utf8')+'\n\nPlugin skills directory: '+path.join(plugin,'skills')+'\n\n'+fs.readFileSync(path.join(plugin,'skills',c.name,'SKILL.md'),'utf8')+'\nUser scope: '+clean(m.params.arguments?.request)}}]}}
  throw Error('Unsupported method');
 }
 const input=readline.createInterface({input:process.stdin,crlfDelay:Infinity});

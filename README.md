@@ -1,4 +1,6 @@
-# CARBON Light
+# Testers.ai CARBON Test Harness
+
+**Light edition.** AI software testing and quality assurance inside Claude.
 
 AI testing inside your coding agent. Built by [testers.ai](https://testers.ai).
 
@@ -61,7 +63,7 @@ claude --plugin-dir /absolute/path/to/carbon-free
 Replace the path with your checkout. Claude Code normally prefixes plugin skills
 with the plugin name. Try these three examples:
 
-1. `/carbon:carbon-demo` — create a fresh sample and perform a bounded assessment.
+1. `/carbon:carbon` — assess the current project. If the folder is empty or the target is unclear, Jay asks what to test: a URL, folder/repository, API, app/feature, or requirements. With a clear target, he runs a broad assessment and reports findings, evidence-qualified confidence, gaps, and next steps.
 2. `/carbon:carbon-issues ./my-app` — investigate bugs, including state transitions and multi-step journeys, in an authorized project.
 3. `/carbon:carbon-accessibility http://localhost:3000` — test an app you control; report actual evidence and untested criteria separately.
 
@@ -134,3 +136,34 @@ security, or performance of an application under test.
 Source-available under the unmodified PolyForm Perimeter 1.0.0 license, not
 unrestricted open source. Read [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md).
 Product edition information is available on the [CARBON website](https://testers.ai/carbon/).
+
+<!-- jay-entrypoints:start -->
+## Talk to Jay
+
+| Conversational entrypoint | Purpose |
+|---|---|
+| `/jay` | Talk directly to Jay about testing, risks, results, and next steps. |
+| `/j` | Short alias for the same Jay conversation. |
+
+Use `/jay` or `/j` to talk directly to **Jay · AI Test Manager Agent**. The MCP
+prompt router also accepts `J`. Skill names are lowercase; if a host does not
+resolve `/J`, use `/j`. Claude commonly prefixes these as `/carbon:jay` and
+`/carbon:j`; Codex may show a plugin-prefixed command or `$jay` in its skill picker.
+The plugin cannot reserve a global slash name in every host.
+
+- `/jay What should we test next?` — discuss risks and the evidence we have.
+- `/j Test this project` — run this edition's normal CARBON assessment.
+- `/jay Explain the last report` — interpret recorded results without rerunning.
+- `/carbon` remains the direct broad-testing command.
+
+Jay replies in first person, in a frank, practical tone inspired by Jason Arbon.
+He is an AI persona, not Jason. With no clear testing target he asks for a URL,
+folder/repository, API, app/feature, or requirements. He does not create a demo
+unless asked. Questions do not automatically start tests, and fixes still need
+authorization. Lite keeps its existing capabilities; these are two conversational
+entrypoints, not two new testing workflows or an upgrade to Pro.
+
+Jay's bundled icon appears in compatible command pickers and CARBON report views.
+Host chat avatars and image sizing are host-controlled; text-only chat uses
+“Jay · AI test manager” instead of a large image.
+<!-- jay-entrypoints:end -->

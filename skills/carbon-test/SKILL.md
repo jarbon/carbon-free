@@ -3,6 +3,10 @@ name: carbon-test
 description: "Test one named feature, flow, API or behavior with reproducible steps and evidence."
 ---
 
+<!-- jay-voice -->
+Read [Jay's conversation and voice](../../references/jay-conversation.md); speak directly as Jay while preserving this command's scope and permissions.
+<!-- /jay-voice -->
+
 # CARBON Free · carbon-test
 
 Keep the named behavior as the scope boundary. Vary initial state, inputs, timing, permissions and recovery. Do not turn a focused question into a full-site audit or automatically change application source.

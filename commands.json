@@ -30,5 +30,13 @@
   {
     "name": "carbon-settings",
     "description": "Read or change project testing defaults and analytics preferences in a protected local settings page."
+  },
+  {
+    "name": "j",
+    "description": "Talk directly to Jay, CARBON's AI test manager: ask questions, discuss evidence, choose what to test, or request an assessment."
+  },
+  {
+    "name": "jay",
+    "description": "Talk directly to Jay, CARBON's AI test manager: ask questions, discuss evidence, choose what to test, or request an assessment."
   }
 ]

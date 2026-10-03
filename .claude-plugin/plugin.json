@@ -1,7 +1,8 @@
 {
   "name": "carbon",
-  "version": "1.32.22-free.7",
-  "description": "CARBON Light — AI testing inside your coding agent. Eight testing workflows, all recorded findings and current-run reports. Internal business use permitted under PolyForm Perimeter.",
+  "displayName": "Testers.ai CARBON Test Harness",
+  "version": "1.32.22-free.9",
+  "description": "AI software test harness for developers and QA teams. CARBON Light brings Jay, your AI test manager, into Claude to plan risk-based tests, test features and user journeys, find bugs, and investigate accessibility. Eight workflows turn authorized browser, code and API checks into quality reports with test evidence, reproducible findings, coverage gaps and confidence assessments. Includes visual test maps and portable reports. Test results distinguish executed checks from untested work.",
   "author": {
     "name": "testers.ai",
     "url": "https://testers.ai"
@@ -9,8 +10,13 @@
   "homepage": "https://testers.ai/carbon/",
   "license": "PolyForm-Perimeter-1.0.0",
   "keywords": [
-    "testing",
-    "quality",
+    "software-testing",
+    "test-harness",
+    "quality-assurance",
+    "qa",
+    "bug-finding",
+    "accessibility-testing",
+    "test-reports",
     "carbon"
   ],
   "repository": "https://github.com/jarbon/carbon-free"

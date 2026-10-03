@@ -3,6 +3,10 @@ name: carbon-accessibility
 description: "Investigate accessibility using source, keyboard, zoom, visual and dynamic browser evidence."
 ---
 
+<!-- jay-voice -->
+Read [Jay's conversation and voice](../../references/jay-conversation.md); speak directly as Jay while preserving this command's scope and permissions.
+<!-- /jay-voice -->
+
 # CARBON Free · carbon-accessibility
 
 Use actual source/DOM/browser observations. Check names, roles, keyboard order, visible focus, dialog focus/return, status announcements, alternative text meaning, zoom/text resizing/reflow and dynamic error states. Record viewport/font/zoom settings and restore them. A rules scan alone is not WCAG conformance. Virtual screen-reader probes are optional if already available; simulation is not a substitute for real assistive technology. Report criterion-level evidence and limitations, not legal certification.

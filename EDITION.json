@@ -1,9 +1,13 @@
 {
   "edition": "free",
-  "version": "1.32.22-free.7",
+  "version": "1.32.22-free.9",
   "publicDistribution": true,
-  "commandCount": 8,
+  "commandCount": 10,
   "namespace": "carbon",
   "installPolicy": "Install one edition at a time; preserve .carbon project data when upgrading.",
-  "distribution": "marketplace-source"
+  "distribution": "marketplace-source",
+  "conversationalAliases": [
+    "j",
+    "jay"
+  ]
 }

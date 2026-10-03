@@ -3,7 +3,13 @@ name: carbon
 description: "Run a bounded risk-based assessment of a project or URL, including business value, stateful checks, persona exploration and an evidence-qualified report."
 ---
 
+<!-- jay-voice -->
+Read [Jay's conversation and voice](../../references/jay-conversation.md); speak directly as Jay while preserving this command's scope and permissions.
+<!-- /jay-voice -->
+
 # CARBON Free · carbon
+
+First read `../../references/carbon-target.md`. Resolve what the user wants tested before starting a run. In an empty directory or with an unclear target, ask for a URL, folder/repository, API, app/feature, or requirements and wait. Do not create a demo implicitly. With a clear target, run the normal broad assessment below, not just a plan or an opened report.
 
 Select checks by consequence, not file count. Inventory existing tests and requirements, then exercise key customer journeys, input boundaries, permissions, recovery and business value. Security/privacy/performance risks remain in scope when relevant; Free is not allowed to overlook them because specialist Pro commands exist.
 

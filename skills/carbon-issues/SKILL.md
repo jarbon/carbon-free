@@ -3,6 +3,10 @@ name: carbon-issues
 description: "Hunt bugs with stateful multi-step journeys and persona exploration, not just a static checklist."
 ---
 
+<!-- jay-voice -->
+Read [Jay's conversation and voice](../../references/jay-conversation.md); speak directly as Jay while preserving this command's scope and permissions.
+<!-- /jay-voice -->
+
 # CARBON Free · carbon-issues
 
 Reserve at least 50% of the run budget for executed multi-step/stateful and persona-led exploration, at least 25% for each. At 20 minutes, plan 5 minutes for each lane; setup and writing persona prose do not count. Record lane and duration evidence, and disclose any shortfall. Prioritize stale async results, cross-tab changes, logout drafts, deleted search results, PII in telemetry, pending/repeated payments, stock expiry, export/reimport, focus and unnamed dialogs. Confirm suspected issues safely; do not exploit production users or data.
