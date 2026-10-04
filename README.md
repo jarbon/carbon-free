@@ -1,5 +1,27 @@
 # Testers.ai CARBON Test Harness
 
+## Your agent's plan. Your local workspace.
+
+**Use the model access you already have.** In Claude Code, Codex, and other coding
+agents, CARBON's default testing workflows use the host's configured model access.
+When the host uses an eligible subscription, CARBON uses that allowance—no separate
+CARBON model API key is required. If the host uses API credentials or a company LLM
+proxy, that billing and data policy apply instead. Plan limits and extra-usage
+charges still apply; CARBON Pro licensing is separate.
+
+**Local execution and local reports—not a promise that no data leaves your machine.**
+For local runs, project files, test evidence, and reports are stored in your local
+workspace. Your coding agent can send selected code, screenshots, prompts, and
+other context to its configured model provider. Local CARBON is not automatically
+offline or air-gapped. Cloud runs, external integrations, and optional direct-model
+checks have separate data flows and may have separate costs. Command-usage analytics
+vary by edition; review that edition's privacy policy and settings.
+
+To confirm your billing route, check `/status` in Claude Code or `codex login status`
+in Codex. A configured API key can select API billing instead of subscription usage.
+Standalone MCP clients must supply their own model access and execution tools;
+installing an MCP server does not include a model subscription.
+
 **Light edition.** AI software testing and quality assurance inside Claude.
 
 AI testing inside your coding agent. Built by [testers.ai](https://testers.ai).

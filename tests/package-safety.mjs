@@ -34,7 +34,8 @@ for(const key of ['API_KEY','OPENAI_API_KEY','AWS_SECRET_ACCESS_KEY','HTTPS_PROX
 assert.equal(observed.isolated,1);assert.equal(observed.no_user_site,1);assert.equal(observed.no_bytecode,true);
 const manifests=['package.json','server/package.json','.claude-plugin/plugin.json','.codex-plugin/plugin.json','EDITION.json']
   .filter(f=>fs.existsSync(path.join(root,f))).map(f=>JSON.parse(fs.readFileSync(path.join(root,f))).version);
-assert.ok(manifests.every(v=>v==='1.32.22-free.9'));
+assert.match(manifests[0], /^1\.32\.22-free\.\d+$/);
+assert.ok(manifests.every(v=>v===manifests[0]), 'All package manifests must agree on the release version');
 const claude=JSON.parse(fs.readFileSync(path.join(root,'.claude-plugin/plugin.json')));
 assert.equal(claude.name,'carbon','Keep existing command namespace');
 assert.equal(claude.displayName,'Testers.ai CARBON Test Harness');

@@ -1,7 +1,7 @@
 {
   "name": "carbon",
-  "version": "1.32.22-free.10",
-  "description": "CARBON Light — AI testing inside your coding agent. Eight testing workflows, all recorded findings and current-run reports. Internal business use permitted under PolyForm Perimeter.",
+  "version": "1.32.22-free.11",
+  "description": "CARBON Light — AI testing inside your coding agent. Eight testing workflows, all recorded findings and current-run reports. Internal business use permitted under PolyForm Perimeter. Default tests use your coding agent's configured model access: an eligible subscription or API billing, with no separate CARBON model key. Local runs store evidence and reports in your workspace; context sent to the host's model provider is not local-only.",
   "author": {
     "name": "testers.ai",
     "url": "https://testers.ai"
@@ -18,7 +18,7 @@
   "interface": {
     "displayName": "CARBON Light",
     "shortDescription": "Find bugs inside your AI coding agent",
-    "longDescription": "CARBON Light — AI testing inside your coding agent. Eight testing workflows, all recorded findings and current-run reports. Internal business use permitted under PolyForm Perimeter.",
+    "longDescription": "CARBON Light — AI testing inside your coding agent. Eight testing workflows, all recorded findings and current-run reports. Internal business use permitted under PolyForm Perimeter. Default tests use your coding agent's configured model access: an eligible subscription or API billing, with no separate CARBON model key. Local runs store evidence and reports in your workspace; context sent to the host's model provider is not local-only.",
     "developerName": "testers.ai",
     "category": "Developer Tools",
     "capabilities": [

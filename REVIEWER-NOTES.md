@@ -1,5 +1,9 @@
 # Directory reviewer notes
 
+## Update 1.32.22-free.11
+
+Clarifies default model access and local data boundaries in plugin metadata and the README. Default testing uses the host coding agent's configured subscription or API access, with no separate CARBON model key. Local evidence storage is distinct from context processed by the host model provider. Plan limits, Pro licensing, integrations, and edition-specific analytics are explicitly qualified. No new runtime permissions, network destinations, tools, or background behavior. Package version metadata is synchronized.
+
 This Light-only source bundle contains eight testing workflows, two conversational
 aliases (`j` and `jay`), and one local stdio MCP server.
 No CARBON service login or test account is required; four synthetic demo fixtures
