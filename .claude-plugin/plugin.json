@@ -1,7 +1,7 @@
 {
   "name": "carbon",
   "displayName": "Testers.ai CARBON Test Harness",
-  "version": "1.32.22-free.9",
+  "version": "1.32.22-free.10",
   "description": "AI software test harness for developers and QA teams. CARBON Light brings Jay, your AI test manager, into Claude to plan risk-based tests, test features and user journeys, find bugs, and investigate accessibility. Eight workflows turn authorized browser, code and API checks into quality reports with test evidence, reproducible findings, coverage gaps and confidence assessments. Includes visual test maps and portable reports. Test results distinguish executed checks from untested work.",
   "author": {
     "name": "testers.ai",

@@ -87,3 +87,14 @@ Source fixtures intentionally include bugs so users can test the workflow.
 
 The plugin is source-available under PolyForm Perimeter 1.0.0. There are no
 automatic Pro promotional messages in its skill responses or generated reports.
+# Release 1.32.22-free.10: optional local hooks
+
+This update adds reviewed command hooks, `background/engine.mjs`, and
+`carbon-background`. Installation does not enable execution. Project consent,
+global pause, duration/daily limits, one worker and activity cancellation are enforced
+in code. Default checks parse changed JSON/JS without executing the application.
+Explicit local test commands and Claude-only tool-free source review require separate
+consent; the latter uses the signed-in provider and its allowance, not a CARBON API.
+Once-daily per-chat reminders ask permission and recommend an installed command.
+No transcript is stored: only a topic label, hashed chat key and timestamps.
+Hosts without command hooks retain manual commands. See background/README.md.

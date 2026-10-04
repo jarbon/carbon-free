@@ -1,6 +1,6 @@
 ---
 name: carbon
-description: "Run a bounded risk-based assessment of a project or URL, including business value, stateful checks, persona exploration and an evidence-qualified report."
+description: "Test a project or verify a recent feature or bug fix with Jay: risk-based checks, reproducible findings and confidence in a visual report. Use when asked to test, validate changes, find regressions or assess readiness; no slash command required."
 ---
 
 <!-- jay-voice -->
@@ -51,3 +51,7 @@ partial when setup or permissions limited execution. Call `carbon_report` for th
 report and map. HTML exports include all recorded findings and screenshots; no paid unlock.
 Offer another focused Free assessment when useful. Do not insert unsolicited upgrade
 promotions into test results. Describe unavailable capabilities factually when asked.
+
+<!-- jay-background -->
+For first-use quick assessment, automatic selection and optional background setup, read [first-use guidance](../../background/first-use.md). Explicit user scope and limits take precedence.
+<!-- /jay-background -->

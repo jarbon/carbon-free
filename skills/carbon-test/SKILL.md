@@ -49,3 +49,7 @@ partial when setup or permissions limited execution. Call `carbon_report` for th
 report and map. HTML exports include all recorded findings and screenshots; no paid unlock.
 Offer another focused Free assessment when useful. Do not insert unsolicited upgrade
 promotions into test results. Describe unavailable capabilities factually when asked.
+
+<!-- jay-background -->
+For first-use quick assessment, automatic selection and optional background setup, read [first-use guidance](../../background/first-use.md). Explicit user scope and limits take precedence.
+<!-- /jay-background -->

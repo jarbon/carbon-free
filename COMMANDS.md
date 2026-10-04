@@ -49,3 +49,10 @@ Jay's bundled icon appears in compatible command pickers and CARBON report views
 Host chat avatars and image sizing are host-controlled; text-only chat uses
 “Jay · AI test manager” instead of a large image.
 <!-- jay-entrypoints:end -->
+# Optional background controls
+
+`/carbon-background` sets up, pauses, or reviews Jay's bounded background checks.
+Execution needs explicit per-project consent and host hook trust. Defaults are a
+two-minute idle delay and three-minute runs, with a ten-minute hard maximum per run.
+Daily per-chat nudges ask whether to run the most useful installed command; they do
+not authorize testing. See [controls and host limits](background/README.md).
