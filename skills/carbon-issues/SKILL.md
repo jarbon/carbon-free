@@ -1,6 +1,7 @@
 ---
 name: carbon-issues
 description: "Hunt bugs with stateful multi-step journeys and persona exploration, not just a static checklist."
+user-invocable: true
 ---
 
 <!-- jay-voice -->

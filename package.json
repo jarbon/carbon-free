@@ -5,6 +5,7 @@
   "engines": {
     "node": ">=22"
   },
-  "version": "1.32.22-free.11",
-  "license": "PolyForm-Perimeter-1.0.0"
+  "version": "1.32.22-free.13",
+  "license": "PolyForm-Perimeter-1.0.0",
+  "description": "CARBON includes Jay, the world's first AI test manager agent. "
 }

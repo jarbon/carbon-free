@@ -1,6 +1,7 @@
 ---
 name: carbon-settings
 description: "Read or change project testing defaults and analytics preferences in a protected local settings page."
+user-invocable: true
 ---
 
 <!-- jay-voice -->

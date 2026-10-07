@@ -1,6 +1,7 @@
 ---
 name: carbon-test
 description: "Test one named feature, flow, API or behavior with reproducible steps and evidence."
+user-invocable: true
 ---
 
 <!-- jay-voice -->

@@ -1,6 +1,7 @@
 ---
 name: carbon-demo
 description: "Create a disposable demo project, optionally with existing tests, and perform a first CARBON assessment."
+user-invocable: true
 ---
 
 <!-- jay-voice -->

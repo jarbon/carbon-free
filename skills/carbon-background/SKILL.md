@@ -1,6 +1,7 @@
 ---
 name: carbon-background
 description: Set up, pause, inspect or review Jay's bounded background checks after code changes. Use when the user wants automatic checking during breaks, or asks what Jay found in the background.
+user-invocable: true
 ---
 
 # Jay background checks

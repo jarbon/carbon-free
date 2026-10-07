@@ -1,6 +1,7 @@
 ---
 name: carbon-accessibility
 description: "Investigate accessibility using source, keyboard, zoom, visual and dynamic browser evidence."
+user-invocable: true
 ---
 
 <!-- jay-voice -->

@@ -1,6 +1,7 @@
 ---
 name: carbon-help
 description: "Explain Free commands, inspect scope when requested, and suggest the smallest useful next assessment."
+user-invocable: true
 ---
 
 <!-- jay-voice -->

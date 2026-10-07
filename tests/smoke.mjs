@@ -15,7 +15,9 @@ try{
  const init=await rpc('initialize');assert.equal(init.result.serverInfo.name,'carbon-free');
  const tools=(await rpc('tools/list')).result.tools;assert.equal(tools.length,6);
  for(const t of tools){assert.equal(typeof t.annotations.title,'string');for(const k of ['readOnlyHint','destructiveHint','idempotentHint','openWorldHint'])assert.equal(typeof t.annotations[k],'boolean')}
- const names=(await rpc('prompts/list')).result.prompts.map(p=>p.name);assert.equal(names.length,11);assert.ok(names.includes('j')&&names.includes('jay')&&names.includes('carbon-background'));assert.ok(!names.includes('carbon-auto'));
+ const names=(await rpc('prompts/list')).result.prompts.map(p=>p.name);assert.equal(names.length,11);assert.ok(names.includes('j')&&names.includes('jay')&&names.includes('carbon-background'));assert.ok(!names.includes('proof'));assert.ok(!names.includes('carbon-auto'));
+ for(const name of ['proof','carbon_proof'])assert.ok((await rpc('prompts/get',{name})).error, name+' must be Pro-only');
+ assert.ok(!fs.existsSync(path.join(plugin,'runtime/carbon/scripts/carbon_proof.py')));
  for(const name of names){const p=await rpc('prompts/get',{name});assert(!p.error,name);assert(p.result.messages[0].content.text.length>100,name);}
  assert(!(await rpc('prompts/get',{name:'J'})).error);
  for(const kind of ['domains','specialists','accessibility'])assert(Object.keys(await tool('carbon_knowledge',{kind})).length>0,kind);

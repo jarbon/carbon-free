@@ -1,8 +1,8 @@
 {
   "edition": "free",
-  "version": "1.32.22-free.11",
+  "version": "1.32.22-free.13",
   "publicDistribution": true,
-  "commandCount": 10,
+  "commandCount": 11,
   "namespace": "carbon",
   "installPolicy": "Install one edition at a time; preserve .carbon project data when upgrading.",
   "distribution": "marketplace-source",

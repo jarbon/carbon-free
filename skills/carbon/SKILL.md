@@ -1,6 +1,7 @@
 ---
 name: carbon
 description: "Test a project or verify a recent feature or bug fix with Jay: risk-based checks, reproducible findings and confidence in a visual report. Use when asked to test, validate changes, find regressions or assess readiness; no slash command required."
+user-invocable: true
 ---
 
 <!-- jay-voice -->

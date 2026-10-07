@@ -1,6 +1,7 @@
 ---
 name: jay
 description: "Talk directly to Jay, CARBON's AI test manager: ask questions, discuss evidence, choose what to test, or request an assessment."
+user-invocable: true
 ---
 
 # Jay · AI Test Manager Agent

@@ -1,6 +1,7 @@
 ---
 name: carbon-map
 description: "Open a screenshot-based map of one saved Free assessment, its checks and findings. Not a cross-build planning workspace."
+user-invocable: true
 ---
 
 <!-- jay-voice -->
