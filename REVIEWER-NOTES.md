@@ -89,7 +89,7 @@ source scan passed before upload. These are not a substitute for Anthropic's
 validation/security review, and are not an application-quality certification.
 Source fixtures intentionally include bugs so users can test the workflow.
 
-The plugin is source-available under PolyForm Perimeter 1.0.0. There are no
+The Light plugin is open source under the MIT License. There are no
 automatic Pro promotional messages in its skill responses or generated reports.
 # Release 1.32.22-free.10: optional local hooks
 

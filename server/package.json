@@ -5,6 +5,6 @@
   "engines": {
     "node": ">=22"
   },
-  "version": "1.32.22-free.13",
-  "license": "PolyForm-Perimeter-1.0.0"
+  "version": "1.32.22-free.14",
+  "license": "MIT"
 }

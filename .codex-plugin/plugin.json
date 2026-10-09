@@ -1,13 +1,13 @@
 {
   "name": "carbon",
-  "version": "1.32.22-free.13",
-  "description": "CARBON includes Jay, the world's first AI test manager agent. CARBON Light \u2014 AI testing inside your coding agent. Testing workflows, all recorded findings and current-run reports. Internal business use permitted under PolyForm Perimeter. Default tests use your coding agent's configured model access: an eligible subscription or API billing, with no separate CARBON model key. Local runs store evidence and reports in your workspace; context sent to the host's model provider is not local-only.",
+  "version": "1.32.22-free.14",
+  "description": "CARBON includes Jay, the world's first AI test manager agent. CARBON Light \u2014 AI testing inside your coding agent. Testing workflows, all recorded findings and current-run reports. Open source under the MIT License. Default tests use your coding agent's configured model access: an eligible subscription or API billing, with no separate CARBON model key. Local runs store evidence and reports in your workspace; context sent to the host's model provider is not local-only.",
   "author": {
     "name": "testers.ai",
     "url": "https://testers.ai"
   },
   "homepage": "https://testers.ai/carbon/",
-  "license": "PolyForm-Perimeter-1.0.0",
+  "license": "MIT",
   "keywords": [
     "testing",
     "quality",
@@ -21,7 +21,7 @@
   "interface": {
     "displayName": "CARBON Light",
     "shortDescription": "AI testing with Jay, your AI test manager",
-    "longDescription": "CARBON includes Jay, the world's first AI test manager agent. CARBON Light \u2014 AI testing inside your coding agent. Eight testing workflows, all recorded findings and current-run reports. Internal business use permitted under PolyForm Perimeter. Default tests use your coding agent's configured model access: an eligible subscription or API billing, with no separate CARBON model key. Local runs store evidence and reports in your workspace; context sent to the host's model provider is not local-only.",
+    "longDescription": "CARBON includes Jay, the world's first AI test manager agent. CARBON Light \u2014 AI testing inside your coding agent. Eight testing workflows, all recorded findings and current-run reports. Open source under the MIT License. Default tests use your coding agent's configured model access: an eligible subscription or API billing, with no separate CARBON model key. Local runs store evidence and reports in your workspace; context sent to the host's model provider is not local-only.",
     "developerName": "testers.ai",
     "category": "Developer Tools",
     "capabilities": [

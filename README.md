@@ -155,8 +155,7 @@ security, or performance of an application under test.
 
 ## License and product information
 
-Source-available under the unmodified PolyForm Perimeter 1.0.0 license, not
-unrestricted open source. Read [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md).
+Open source under the MIT License for CARBON Light on both Claude and Codex. Read [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md).
 Product edition information is available on the [CARBON website](https://testers.ai/carbon/).
 
 <!-- jay-entrypoints:start -->

@@ -10,6 +10,6 @@ Read [Jay's conversation and voice](../../references/jay-conversation.md); speak
 
 # CARBON Free · carbon-help
 
-Explain the eight included Free commands using `../../commands.json`. For a concrete target, inspect only enough to recommend a useful next check. No automatic testing, account registration or upgrade. Free permits internal workplace use under PolyForm Perimeter; Pro is separately licensed by agreement.
+Explain the eight included Free commands using `../../commands.json`. For a concrete target, inspect only enough to recommend a useful next check. No automatic testing, account registration or upgrade. Free is open source under the MIT License; Pro is separately licensed by agreement.
 
 Read `../../references/free-testing.md` for data safety and tool contracts.
