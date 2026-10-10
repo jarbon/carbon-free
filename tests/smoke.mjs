@@ -27,7 +27,11 @@ try{
  await bad('carbon_auto',{root});assert.ok((await rpc('prompts/get',{name:'carbon-forever'})).error);
  const skill=await rpc('prompts/get',{name:'carbon-issues'});assert.ok(skill.result.messages[0].content.text.includes('50%'));
  assert.ok(!skill.result.messages[0].content.text.includes('https://testers.ai/carbon/#pro'));
- const listing=await tool('carbon_demo',{root,action:'list'});assert.equal(listing.fixtures.length,4);
+ const listing=await tool('carbon_demo',{root,action:'list'});
+ assert.deepEqual(listing.fixtures.map(f=>f.id).sort(),['api-server','eval-runner','testbucks','web-app','web-static']);
+ const checkSchema=tools.find(t=>t.name==='carbon_update').inputSchema.properties.checks.items.properties;
+ assert.equal(checkSchema.actual.type,'string');assert.equal(checkSchema.evidence.type,'string');
+ assert.ok(!checkSchema.observed);
  for(const fixture of listing.fixtures) for(const profile of ['with-existing-tests','without-existing-tests'])
   await tool('carbon_demo',{root,action:'create',fixture:fixture.id,testProfile:profile,destination:fixture.id+'-'+profile});
  await bad('carbon_demo',{root,action:'create',fixture:'web-static',destination:'web-static-with-existing-tests'});
@@ -37,6 +41,8 @@ try{
  let snapshot=await fetch(base+'/snapshot?session='+session,{headers:{Authorization:'Bearer '+token}});assert.equal(snapshot.status,200);assert.ok(!(await snapshot.text()).includes('Confidence in the tested scope'));
  await bad('carbon_update',{root,runId:start.runId,status:'completed'});
  await bad('carbon_update',{root,runId:start.runId,checks:[{id:'x',status:'passed'}]});
+ const missingEvidence=await rpc('tools/call',{name:'carbon_update',arguments:{root,runId:start.runId,checks:[{id:'x',status:'passed',observed:'wrong field'}]}});
+ assert.match(JSON.stringify(missingEvidence),/actual and evidence/);
  await bad('carbon_update',{root,runId:start.runId,journeys:[{id:'path',title:'Recorded path',steps:[{title:'Save',status:'passed'}]}]});
  await tool('carbon_update',{root,runId:start.runId,journeys:[{id:'path',title:'Recorded path',steps:[{title:'Save',status:'passed',evidence:'Synthetic saved confirmation'}]}]});
  const persisted=JSON.parse(fs.readFileSync(path.join(root,'.carbon/free/runs',start.runId,'state.json'),'utf8'));

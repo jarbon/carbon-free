@@ -8,7 +8,8 @@ import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import {demoEnvironment} from './demo-environment.mjs';
 import {homedir} from 'node:os';
-import {trackFathomEvent, eventForCommandStart, analyticsEnabled} from './fathom-analytics.mjs';
+import {usage} from './usage-analytics.mjs';
+const analyticsEnabled=()=>usage().enabled();
 import {render} from './view.mjs';
 
 const plugin=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -43,7 +44,7 @@ function runFolder(root,id){if(!/^free-[a-f0-9]{16}$/.test(id))throw Error('Inva
 function load(root,id){const state=read(path.join(runFolder(root,id),'state.json'));if(!state||state.schema!=='carbon.free-run/v1')throw Error('Run not found');return state}
 function save(root,state){const folder=runFolder(root,state.id);atomic(path.join(folder,'state.json'),JSON.stringify(state,null,2));atomic(path.join(folder,'report.html'),render(state));atomic(path.join(folder,'map.html'),render(state,'map'))}
 function normalizeCheck(c,i){object(c);if(!c.title)throw Error('Every check needs a title');const status=c.status||'planned';if(!allowedStatus.has(status))throw Error('Invalid check status');
- if(['passed','failed'].includes(status)&&(!String(c.actual||'').trim()||!String(c.evidence||'').trim()))throw Error('Executed checks need observed results and evidence');
+ if(['passed','failed'].includes(status)&&(!String(c.actual||'').trim()||!String(c.evidence||'').trim()))throw Error('Passed/failed checks require non-empty actual and evidence fields. actual: observed outcome; evidence: captured result or evidence reference. No observed field is used.');
  return {id:clean(c.id||'check-'+(i+1),80),title:clean(c.title,500),domain:clean(c.domain||'Functionality',100),type:clean(c.type||'positive',80),lane:clean(c.lane||'directed',80),risk:clean(c.risk,2000),steps:clean(c.steps,8000),expected:clean(c.expected,4000),actual:clean(c.actual,6000),evidence:clean(c.evidence,6000),status,page:clean(c.page,2000)};
 }
 function normalizeFinding(f){object(f);if(!f.title||!f.consequence)throw Error('Findings need a title and consequence');return {id:clean(f.id||crypto.randomBytes(6).toString('hex'),80),title:clean(f.title,500),severity:clean(f.severity||'medium',50),strength:clean(f.strength||'suspected',80),consequence:clean(f.consequence),steps:clean(f.steps),evidence:clean(f.evidence),remediation:clean(f.remediation),verification:clean(f.verification),page:clean(f.page,2000)}}
@@ -85,9 +86,10 @@ async function viewer(root,run,mode='report'){
  return 'http://127.0.0.1:'+web.address().port+'/view?session='+session+'#'+token;
 }
 const str={type:'string'},obj={type:'object'},arr={type:'array',items:obj};
+const checkArray={type:'array',items:{type:'object',properties:{id:str,title:str,status:{type:'string',enum:[...allowedStatus]},actual:{type:'string',description:'Observed outcome. Required and non-empty for passed/failed checks.'},evidence:{type:'string',description:'Captured result or evidence reference. Required and non-empty for passed/failed checks.'}}}};
 const definitions=[
  ['carbon_start','Start a bounded Free assessment. Returns a live report URL; does not open the browser or execute tests itself.',{root:str,command:{type:'string',enum:commands.map(c=>c.name)},title:str,target:str,checks:arr},['root','command','title']],
- ['carbon_update','Record actual checks, findings, pages, persona journeys, blockers and confidence for one run. Merge by IDs; no findings are hidden.',{root:str,runId:str,current:str,why:str,summary:str,status:{type:'string',enum:['running',...terminal]},checks:arr,findings:arr,pages:arr,journeys:arr,personas:arr,blockers:{type:'array',items:str},confidence:obj},['root','runId']],
+ ['carbon_update','Record checks, findings, pages, persona journeys, blockers and confidence. Passed/failed checks require actual and evidence strings; there is no observed field. Merge by IDs; no findings are hidden.',{root:str,runId:str,current:str,why:str,summary:str,status:{type:'string',enum:['running',...terminal]},checks:checkArray,findings:arr,pages:arr,journeys:arr,personas:arr,blockers:{type:'array',items:str},confidence:obj},['root','runId']],
  ['carbon_report','Reopen a saved report or current-run map; returns portable HTML and JSON paths.',{root:str,runId:str,view:{type:'string',enum:['report','map']}},['root','runId']],
  ['carbon_settings','Read or update local preferences and global analytics opt-out; returns a local settings UI.',{root:str,patch:obj},['root']],
  ['carbon_demo','List or create a fresh disposable demo; never overwrites an existing project.',{root:str,action:{type:'string',enum:['list','create']},fixture:str,destination:str,testProfile:{type:'string',enum:['without-existing-tests','with-existing-tests']}},['root','action']],
@@ -102,7 +104,7 @@ async function call(name,a){
   if(!commands.some(c=>c.name===a.command))throw Error('Command not included in Free');if(!a.title)throw Error('Run title required');
   const checks=(a.checks||[]).map(normalizeCheck);if(new Set(checks.map(c=>c.id)).size!==checks.length)throw Error('Duplicate check IDs');
   const state={schema:'carbon.free-run/v1',edition:'free',id:'free-'+crypto.randomBytes(8).toString('hex'),command:a.command,title:clean(a.title,500),target:clean(a.target,2000),createdAt:now(),updatedAt:now(),status:'running',current:'Inspecting the target and selecting meaningful checks',why:'Start with the most consequential customer journeys',settings:preferences(root),checks,findings:[],pages:[],personas:[],history:[],blockers:[]};
-  save(root,state);void trackFathomEvent(eventForCommandStart(a.command));return {runId:state.id,url:await viewer(root,state.id),reportPath:path.join(runFolder(root,state.id),'report.html'),defaults:state.settings};
+  save(root,state);await usage().record('Assessment Started',a.command,'start:'+state.id);return {runId:state.id,url:await viewer(root,state.id),reportPath:path.join(runFolder(root,state.id),'report.html'),defaults:state.settings};
  }
  if(name==='carbon_update'){
   const state=load(root,a.runId);if(terminal.has(state.status))throw Error('Run is closed; start a new assessment, preserving this evidence');
@@ -116,12 +118,12 @@ async function call(name,a){
   if(a.blockers)state.blockers=a.blockers.map(x=>clean(x));
   if(a.confidence){const c=object(a.confidence);if(!c.rationale||!c.scope)throw Error('Confidence requires scope and rationale');if(c.score!==undefined&&(!Number.isFinite(c.score)||c.score<0||c.score>100))throw Error('Score must be between 0 and 100');state.confidence={...(c.score!==undefined?{score:c.score}:{}),scope:clean(c.scope),rationale:clean(c.rationale),limitations:clean(c.limitations)};}
   if(a.status){if(a.status!=='running'&&!terminal.has(a.status))throw Error('Invalid run status');if(a.status==='completed'&&state.checks.some(c=>['planned','running'].includes(c.status)))throw Error('Mark unexecuted checks deferred or blocked before completion');state.status=a.status}
-  state.updatedAt=now();state.history.push({at:state.updatedAt,current:state.current,why:state.why});save(root,state);return {runId:state.id,status:state.status,checks:state.checks.length,findings:state.findings.length,reportPath:path.join(runFolder(root,state.id),'report.html')};
+  state.updatedAt=now();state.history.push({at:state.updatedAt,current:state.current,why:state.why});save(root,state);if(terminal.has(state.status))await usage().record('Assessment '+state.status[0].toUpperCase()+state.status.slice(1),state.command,'terminal:'+state.id);return {runId:state.id,status:state.status,checks:state.checks.length,findings:state.findings.length,reportPath:path.join(runFolder(root,state.id),'report.html')};
  }
- if(name==='carbon_report'){load(root,a.runId);const view=a.view==='map'?'map':'report';return {url:await viewer(root,a.runId,view),htmlPath:path.join(runFolder(root,a.runId),view+'.html'),jsonPath:path.join(runFolder(root,a.runId),'state.json'),portable:'Copy the HTML file to share; images are embedded. Review for sensitive data before sharing.'}}
- if(name==='carbon_settings')return {settings:a.patch?setPreferences(root,a.patch):{...preferences(root),analyticsEnabled:analyticsEnabled()},url:await viewer(root,null,'settings')};
+ if(name==='carbon_report'){load(root,a.runId);const view=a.view==='map'?'map':'report';await usage().record('Report Viewed');return {url:await viewer(root,a.runId,view),htmlPath:path.join(runFolder(root,a.runId),view+'.html'),jsonPath:path.join(runFolder(root,a.runId),'state.json'),portable:'Copy the HTML file to share; images are embedded. Review for sensitive data before sharing.'}}
+ if(name==='carbon_settings'){const settings=a.patch?setPreferences(root,a.patch):{...preferences(root),analyticsEnabled:analyticsEnabled()};await usage().record('Settings Viewed');return {settings,analytics:usage().status(),url:await viewer(root,null,'settings')};}
  if(name==='carbon_demo'){
-  const script=path.join(plugin,'runtime/carbon/scripts/carbon_demo.py');const args=a.action==='list'?['list']:['create','--root',root,'--fixture',a.fixture||'web-static','--test-profile',a.testProfile||'without-existing-tests',...(a.destination?['--destination',a.destination]:[])];
+  const script=path.join(plugin,'runtime/carbon/scripts/carbon_demo.py');const args=a.action==='list'?['list']:['create','--root',root,'--fixture',a.fixture||'testbucks','--test-profile',a.testProfile||'without-existing-tests',...(a.destination?['--destination',a.destination]:[])];
   return JSON.parse(execFileSync('python3',['-I','-B',script,...args],{encoding:'utf8',timeout:30000,env:demoEnvironment()}));
  }
  throw Error('Tool not available in CARBON Free');

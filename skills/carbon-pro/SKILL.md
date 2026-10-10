@@ -17,3 +17,14 @@ Do not append project data or tracking parameters to the URL.
 If browser opening is unavailable or blocked, give the user the clickable
 [Explore CARBON Pro](https://testers.ai/carbon/#pro) link instead. Say the page
 opened only if the tool confirms it; do not bypass a browser restriction.
+
+<!-- usage-command:start -->
+### Anonymous usage counter
+Once when this command is actually invoked (not when merely listing or reading
+documentation), run `node <absolute-plugin-root>/scripts/usage-analytics.mjs command carbon-pro`
+with the host terminal if available. Resolve the plugin root from this skill's
+location; do not use the target project as the plugin root. Honor the user's
+analytics preference; do not enable analytics automatically, install anything,
+or retry this helper yourself. Failure or missing terminal access must never
+block the command. This records a command invocation, not a completed test.
+<!-- usage-command:end -->

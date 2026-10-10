@@ -61,7 +61,7 @@ def output_fixture(fixture: dict[str, Any]) -> dict[str, Any]:
         "kind": fixture.get("kind"),
         "complexity": fixture.get("complexity"),
         "default": bool(fixture.get("default")),
-        "start": {"command": start.get("command", ""), "url": start.get("url", "")},
+        "start": dict(start),
         "testSummary": fixture.get("testSummary", ""),
         "profiles": ["without-existing-tests", "with-existing-tests"],
     }
@@ -156,7 +156,7 @@ def cmd_create(args: argparse.Namespace) -> dict[str, Any]:
         "destination": str(destination),
         "descriptorPath": str(destination / ".carbon-demo.json"),
         "removedTestPaths": removed_paths,
-        "start": {"command": start.get("command", ""), "url": start.get("url", "")},
+        "start": dict(start),
         "next": {
             "carbon": f"/carbon {destination}",
             "withExistingTests": profile == "with-existing-tests",
@@ -172,7 +172,7 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("list", help="List bundled demo fixtures and profiles.")
     create = subparsers.add_parser("create", help="Create one disposable demo project copy.")
     create.add_argument("--root", required=True, help="Existing workspace directory that receives the new demo folder.")
-    create.add_argument("--fixture", help="Fixture id. Defaults to web-static.")
+    create.add_argument("--fixture", help="Fixture id. Defaults to testbucks.")
     create.add_argument("--test-profile", choices=["without-existing-tests", "with-existing-tests"], default="without-existing-tests")
     create.add_argument("--destination", help="New subdirectory relative to root or absolute under root. Must not exist.")
     return parser

@@ -50,3 +50,14 @@ partial when setup or permissions limited execution. Call `carbon_report` for th
 report and map. HTML exports include all recorded findings and screenshots; no paid unlock.
 Offer another focused Free assessment when useful. Do not insert unsolicited upgrade
 promotions into test results. Describe unavailable capabilities factually when asked.
+
+<!-- usage-command:start -->
+### Anonymous usage counter
+Once when this command is actually invoked (not when merely listing or reading
+documentation), run `node <absolute-plugin-root>/scripts/usage-analytics.mjs command carbon-accessibility`
+with the host terminal if available. Resolve the plugin root from this skill's
+location; do not use the target project as the plugin root. Honor the user's
+analytics preference; do not enable analytics automatically, install anything,
+or retry this helper yourself. Failure or missing terminal access must never
+block the command. This records a command invocation, not a completed test.
+<!-- usage-command:end -->

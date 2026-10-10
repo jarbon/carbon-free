@@ -70,3 +70,14 @@ counter. A timeout, provider failure or cancellation is partial/blocked, not a p
 Hosts must support and trust the bundled command hooks. In unsupported hosts, explain
 that idle automation is unavailable and offer a normal bounded quick assessment with
 available host tools. Never install a daemon, create a schedule or bypass hook trust.
+
+<!-- usage-command:start -->
+### Anonymous usage counter
+Once when this command is actually invoked (not when merely listing or reading
+documentation), run `node <absolute-plugin-root>/scripts/usage-analytics.mjs command carbon-background`
+with the host terminal if available. Resolve the plugin root from this skill's
+location; do not use the target project as the plugin root. Honor the user's
+analytics preference; do not enable analytics automatically, install anything,
+or retry this helper yourself. Failure or missing terminal access must never
+block the command. This records a command invocation, not a completed test.
+<!-- usage-command:end -->

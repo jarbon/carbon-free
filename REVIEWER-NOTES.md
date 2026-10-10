@@ -102,3 +102,28 @@ consent; the latter uses the signed-in provider and its allowance, not a CARBON 
 Once-daily per-chat reminders ask permission and recommend an installed command.
 No transcript is stored: only a topic label, hashed chat key and timestamps.
 Hosts without command hooks retain manual commands. See background/README.md.
+
+<!-- usage-analytics:start -->
+## Optional usage analytics
+
+Analytics records fixed command names, first activation, assessment lifecycle,
+report/settings use, edition and version. It never includes prompts, code,
+project paths, target URLs, screenshots, findings, credentials or a persistent
+user identifier. Enabled events go to Fathom at https://cdn.usefathom.com/;
+the service necessarily sees connection metadata such as IP address.
+
+Claude editions retain default-enabled analytics. Codex editions default off;
+enabling requires the user's explicit choice. Run `node <plugin>/scripts/usage-analytics.mjs
+status`, `on`, or `off`. Global `CARBON_ANALYTICS=off`, `DO_NOT_TRACK=1`, or
+the global analytics-disabled setting overrides edition preferences. An explicit
+`CARBON_ANALYTICS=on` enables analytics unless DO_NOT_TRACK is set.
+
+Failed deliveries are retried on later activity, with at most 200 local event
+records and seven days of retention, in ~/.config/carbon/usage/<edition>.
+Disabling analytics clears pending events on the next helper invocation.
+There is no background uploader. HTTP acceptance does not prove dashboard
+ingestion; retries after uncertain failures may duplicate receiver counts.
+First activation is once per edition/local configuration, not an install or a
+unique person. Installs come from publisher dashboards. Command telemetry is
+best effort: hosts that do not execute the skill's helper cannot be counted.
+<!-- usage-analytics:end -->

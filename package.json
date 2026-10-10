@@ -5,7 +5,7 @@
   "engines": {
     "node": ">=22"
   },
-  "version": "1.32.22-free.15",
+  "version": "1.32.22-free.17",
   "license": "MIT",
   "description": "CARBON includes Jay, the world's first AI test manager agent. "
 }

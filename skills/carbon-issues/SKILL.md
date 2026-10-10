@@ -54,3 +54,14 @@ promotions into test results. Describe unavailable capabilities factually when a
 <!-- jay-background -->
 For first-use quick assessment, automatic selection and optional background setup, read [first-use guidance](../../background/first-use.md). Explicit user scope and limits take precedence.
 <!-- /jay-background -->
+
+<!-- usage-command:start -->
+### Anonymous usage counter
+Once when this command is actually invoked (not when merely listing or reading
+documentation), run `node <absolute-plugin-root>/scripts/usage-analytics.mjs command carbon-issues`
+with the host terminal if available. Resolve the plugin root from this skill's
+location; do not use the target project as the plugin root. Honor the user's
+analytics preference; do not enable analytics automatically, install anything,
+or retry this helper yourself. Failure or missing terminal access must never
+block the command. This records a command invocation, not a completed test.
+<!-- usage-command:end -->

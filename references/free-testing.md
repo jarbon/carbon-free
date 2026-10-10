@@ -41,6 +41,13 @@ opening when the host cannot do it. Show a clickable fallback HTML link.
 After execution update status to passed, failed, blocked or deferred, with actual
 observations and evidence. Paths/links are evidence references, not proof that the
 underlying test ran. Do not use passed for unexecuted or merely generated tests.
+Use the exact fields `actual` and `evidence`; there is no `observed` field.
+For example, after genuinely observing the reload:
+
+```json
+{"id":"save-reload","title":"Saved preference survives reload","status":"passed","actual":"The saved dark theme remains after reload","evidence":"Settings page after reload showed dark theme selected"}
+```
+
 `current` and `why` give a brief action summary and its user benefit; not hidden reasoning.
 Allowed run statuses: running, completed, partial, blocked, canceled.
 

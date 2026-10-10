@@ -1,8 +1,8 @@
 {
   "name": "carbon",
   "displayName": "Testers.ai CARBON Test Harness",
-  "version": "1.32.22-free.15",
-  "description": "AI software test harness for developers and QA teams. CARBON Light brings Jay, the world's first AI test manager agent, into Claude to plan risk-based tests, test features and user journeys, find bugs, and investigate accessibility. Testing workflows turn authorized browser, code and API checks into quality reports with test evidence, reproducible findings, coverage gaps and confidence assessments. Includes visual test maps and portable reports. Test results distinguish executed checks from untested work. Default tests use your coding agent's configured model access: an eligible subscription or API billing, with no separate CARBON model key. Local runs store evidence and reports in your workspace; context sent to the host's model provider is not local-only.",
+  "version": "1.32.22-free.17",
+  "description": "AI software test harness with Jay, the world's first AI test manager agent. Plan risk-based tests, test user journeys, find bugs and assess quality with evidence, visual reports and confidence assessments. Includes a bundled TestBucks demo. Uses your agent's model access; no separate CARBON model key. Local runs save reports in your workspace; your agent may send context to its model provider.",
   "author": {
     "name": "testers.ai",
     "url": "https://testers.ai"

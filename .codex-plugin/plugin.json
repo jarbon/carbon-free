@@ -1,6 +1,6 @@
 {
   "name": "carbon",
-  "version": "1.32.22-free.15",
+  "version": "1.32.22-free.17",
   "description": "CARBON includes Jay, the world's first AI test manager agent. CARBON Light \u2014 AI testing inside your coding agent. Testing workflows, all recorded findings and current-run reports. Open source under the MIT License. Default tests use your coding agent's configured model access: an eligible subscription or API billing, with no separate CARBON model key. Local runs store evidence and reports in your workspace; context sent to the host's model provider is not local-only.",
   "author": {
     "name": "testers.ai",
