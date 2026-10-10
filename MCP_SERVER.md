@@ -52,3 +52,14 @@ Jay's bundled icon appears in compatible command pickers and CARBON report views
 Host chat avatars and image sizing are host-controlled; text-only chat uses
 “Jay · AI test manager” instead of a large image.
 <!-- jay-entrypoints:end -->
+
+<!-- carbon-pro-command:start -->
+## Explore CARBON Pro
+
+Run `/carbon-pro` to open [CARBON Pro features and pricing](https://testers.ai/carbon/#pro).
+In Claude Code or Cowork, the plugin-prefixed command is `/carbon:carbon-pro`.
+In Codex, choose `carbon-pro` from the plugin skill picker (or use `$carbon-pro`).
+MCP clients expose the `carbon-pro` prompt; the full runtime also accepts `carbon_pro`.
+This is a navigation shortcut available in every edition, not a paid testing workflow.
+It does not run tests, start checkout, install Pro, or expose customer downloads.
+<!-- carbon-pro-command:end -->

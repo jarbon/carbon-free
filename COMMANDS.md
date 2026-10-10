@@ -56,3 +56,14 @@ Execution needs explicit per-project consent and host hook trust. Defaults are a
 two-minute idle delay and three-minute runs, with a ten-minute hard maximum per run.
 Daily per-chat nudges ask whether to run the most useful installed command; they do
 not authorize testing. See [controls and host limits](background/README.md).
+
+<!-- carbon-pro-command:start -->
+## Explore CARBON Pro
+
+Run `/carbon-pro` to open [CARBON Pro features and pricing](https://testers.ai/carbon/#pro).
+In Claude Code or Cowork, the plugin-prefixed command is `/carbon:carbon-pro`.
+In Codex, choose `carbon-pro` from the plugin skill picker (or use `$carbon-pro`).
+MCP clients expose the `carbon-pro` prompt; the full runtime also accepts `carbon_pro`.
+This is a navigation shortcut available in every edition, not a paid testing workflow.
+It does not run tests, start checkout, install Pro, or expose customer downloads.
+<!-- carbon-pro-command:end -->

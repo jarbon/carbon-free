@@ -194,3 +194,14 @@ Host chat avatars and image sizing are host-controlled; text-only chat uses
 
 After an explicit per-project choice and host hook trust, Jay checks changed code during breaks. Defaults: 2-minute idle delay, 3-minute runs, maximum 10 minutes per run, one worker, 3 runs and 10 reserved minutes per UTC day across projects. No automatic fixes or live-site testing. Local checks and outcome counts stay on this machine. Optional Claude-only AI source review requires separate consent to provider processing and allowance use. Codex checks do not launch Claude. Use `carbon-background` to enable, pause, review, or disable everywhere. See [behavior, controls and privacy](background/README.md). Unsupported hosts retain manual testing.
 <!-- /jay-background -->
+
+<!-- carbon-pro-command:start -->
+## Explore CARBON Pro
+
+Run `/carbon-pro` to open [CARBON Pro features and pricing](https://testers.ai/carbon/#pro).
+In Claude Code or Cowork, the plugin-prefixed command is `/carbon:carbon-pro`.
+In Codex, choose `carbon-pro` from the plugin skill picker (or use `$carbon-pro`).
+MCP clients expose the `carbon-pro` prompt; the full runtime also accepts `carbon_pro`.
+This is a navigation shortcut available in every edition, not a paid testing workflow.
+It does not run tests, start checkout, install Pro, or expose customer downloads.
+<!-- carbon-pro-command:end -->

@@ -15,7 +15,10 @@ try{
  const init=await rpc('initialize');assert.equal(init.result.serverInfo.name,'carbon-free');
  const tools=(await rpc('tools/list')).result.tools;assert.equal(tools.length,6);
  for(const t of tools){assert.equal(typeof t.annotations.title,'string');for(const k of ['readOnlyHint','destructiveHint','idempotentHint','openWorldHint'])assert.equal(typeof t.annotations[k],'boolean')}
- const names=(await rpc('prompts/list')).result.prompts.map(p=>p.name);assert.equal(names.length,11);assert.ok(names.includes('j')&&names.includes('jay')&&names.includes('carbon-background'));assert.ok(!names.includes('proof'));assert.ok(!names.includes('carbon-auto'));
+ const names=(await rpc('prompts/list')).result.prompts.map(p=>p.name);assert.equal(names.length,12);assert.ok(names.includes('j')&&names.includes('jay')&&names.includes('carbon-background')&&names.includes('carbon-pro'));assert.ok(!names.includes('proof'));assert.ok(!names.includes('carbon-auto'));
+ const proText=(await rpc('prompts/get',{name:'carbon-pro',arguments:{request:'private project'}})).result.messages[0].content.text;
+ assert.ok(proText.includes('https://testers.ai/carbon/#pro'));
+ assert.ok(!proText.includes('private project')&&!proText.includes('jay-conversation.md'));
  for(const name of ['proof','carbon_proof'])assert.ok((await rpc('prompts/get',{name})).error, name+' must be Pro-only');
  assert.ok(!fs.existsSync(path.join(plugin,'runtime/carbon/scripts/carbon_proof.py')));
  for(const name of names){const p=await rpc('prompts/get',{name});assert(!p.error,name);assert(p.result.messages[0].content.text.length>100,name);}
@@ -50,5 +53,5 @@ try{
  const saved=await fetch(endpoint,{method:'POST',headers:{...auth,Origin:su.origin},body:'{"minutes":10}'});assert.equal(saved.status,200);assert.equal((await saved.json()).settings.minutes,10);
  await bad('carbon_settings',{root,patch:{minutes:-5}});
  const poison=fs.mkdtempSync(path.join(os.tmpdir(),'carbon-symlink-check-'));fs.symlinkSync(root,path.join(poison,'.carbon'));await bad('carbon_start',{root:poison,command:'carbon',title:'No symlink writes'});
- console.log(JSON.stringify({passed:true,checks:['11 prompt commands plus J alias resolve; no Pro tools/prompts','all 6 MCP tools exercised; 3 knowledge domains','both demo profiles; no overwrite','live auth; XSS escaping; no token in offline export','partial and complete lifecycle','screenshots and personas','settings page and snapshot load; settings persist; cross-origin writes blocked','symlink protection'],root,report:opened.htmlPath},null,2));
+ console.log(JSON.stringify({passed:true,checks:['12 prompt commands plus J alias resolve; no paid Pro testing tools/prompts','all 6 MCP tools exercised; 3 knowledge domains','both demo profiles; no overwrite','live auth; XSS escaping; no token in offline export','partial and complete lifecycle','screenshots and personas','settings page and snapshot load; settings persist; cross-origin writes blocked','symlink protection'],root,report:opened.htmlPath},null,2));
 }finally{child.stdin.end();setTimeout(()=>child.kill(),2000).unref()}

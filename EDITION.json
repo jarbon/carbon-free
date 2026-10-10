@@ -1,13 +1,14 @@
 {
   "edition": "free",
-  "version": "1.32.22-free.14",
+  "version": "1.32.22-free.15",
   "publicDistribution": true,
-  "commandCount": 11,
+  "commandCount": 12,
   "namespace": "carbon",
   "installPolicy": "Install one edition at a time; preserve .carbon project data when upgrading.",
   "distribution": "marketplace-source",
   "conversationalAliases": [
     "j",
     "jay"
-  ]
+  ],
+  "upgradeUrl": "https://testers.ai/carbon/#pro"
 }

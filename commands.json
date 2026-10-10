@@ -42,5 +42,9 @@
   {
     "name": "carbon-background",
     "description": "Set up, pause or review bounded background checks with explicit project consent."
+  },
+  {
+    "name": "carbon-pro",
+    "description": "Open the CARBON Pro marketing page to explore Pro features, pricing, and upgrade options."
   }
 ]
