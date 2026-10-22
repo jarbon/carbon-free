@@ -10,7 +10,9 @@ Read [Jay's conversation and voice](../../references/jay-conversation.md); speak
 
 # CARBON Free · carbon-settings
 
-Call `carbon_settings` for the project root, with an optional patch only for explicitly requested changes. Open the returned local settings UI. Supported keys are minutes, maxChecks, focus and analyticsEnabled. Never put credentials in focus text. Analytics is global; CARBON_ANALYTICS=off overrides stored preference. No separate testing run is needed.
+Call `carbon_settings` for the project root, with an optional patch only for explicitly requested changes. Open its exact browser `openTarget` (including the fragment token), never an HTML file/source editor. Introduce Jay briefly and point out `/carbon:carbon-settings` so the user can return later. The page keeps the automatic quick checks versus manual-only choice prominent.
+
+Supported keys are minutes, maxChecks, focus, analyticsEnabled and backgroundMode (`automatic` or `manual`). The mode changes the real shared background supervisor, not a separate UI flag. Never submit a choice for the user merely because a radio button is preselected. Explicit Save acknowledges onboarding. Preserve global pauses and environment disables; this choice never enables AI review or adds executable test commands. All existing foreground preferences remain editable. Never put credentials in focus text. Analytics is global; CARBON_ANALYTICS=off overrides stored preference. No separate testing run is needed.
 
 Read `../../references/free-testing.md` for data safety and tool contracts.
 

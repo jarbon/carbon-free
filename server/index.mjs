@@ -11,6 +11,7 @@ import {homedir} from 'node:os';
 import {usage} from './usage-analytics.mjs';
 const analyticsEnabled=()=>usage().enabled();
 import {render} from './view.mjs';
+import {readSettings as readBackgroundSettings, saveMode} from '../background/onboarding.mjs';
 
 const plugin=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const manifest=JSON.parse(fs.readFileSync(path.join(plugin,'.claude-plugin/plugin.json')));
@@ -31,14 +32,20 @@ function under(root,rel){
 function atomic(file,value){fs.mkdirSync(path.dirname(file),{recursive:true,mode:0o700});const temp=file+'.'+crypto.randomBytes(6).toString('hex');fs.writeFileSync(temp,value,{mode:0o600});fs.renameSync(temp,file)}
 function read(file,fallback){try{return JSON.parse(fs.readFileSync(file,'utf8'))}catch(e){if(e.code==='ENOENT')return fallback;throw e}}
 function preferences(root){return read(under(root,'.carbon/free/settings.json'),{minutes:20,maxChecks:20,focus:''})}
-function setPreferences(root,patch){
+const backgroundSettings=root=>readBackgroundSettings(root,{edition:'claude-free'});
+const settingsState=root=>({settings:preferences(root),analyticsEnabled:analyticsEnabled(),background:backgroundSettings(root)});
+const browserPresentation=url=>({url,browserUrl:url,openTarget:{type:'browser',url},placement:'right'});
+async function setPreferences(root,patch){
  object(patch);const next=preferences(root);
- for(const k of Object.keys(patch))if(!['minutes','maxChecks','focus','analyticsEnabled'].includes(k))throw Error('Unsupported preference');
+ for(const k of Object.keys(patch))if(!['minutes','maxChecks','focus','analyticsEnabled','backgroundMode'].includes(k))throw Error('Unsupported preference');
  for(const k of ['minutes','maxChecks'])if(k in patch){if(!Number.isInteger(patch[k])||patch[k]<1||patch[k]>240)throw Error(k+' must be between 1 and 240');next[k]=patch[k]}
  if('focus' in patch)next.focus=clean(patch.focus,2000);
+ if('backgroundMode' in patch&&!['automatic','manual'].includes(patch.backgroundMode))throw Error('backgroundMode must be automatic or manual');
+ if('analyticsEnabled' in patch&&typeof patch.analyticsEnabled!=='boolean')throw Error('analyticsEnabled must be boolean');
+ if('backgroundMode' in patch)await saveMode(root,patch.backgroundMode,{edition:'claude-free',acknowledge:true});
  if('analyticsEnabled' in patch){if(typeof patch.analyticsEnabled!=='boolean')throw Error('analyticsEnabled must be boolean');
   const home=rootFor(homedir()),file=under(home,'.config/carbon/config.json');atomic(file,JSON.stringify({...read(file,{}),analyticsEnabled:patch.analyticsEnabled},null,2));}
- atomic(under(root,'.carbon/free/settings.json'),JSON.stringify(next,null,2));return {...next,analyticsEnabled:analyticsEnabled()};
+ atomic(under(root,'.carbon/free/settings.json'),JSON.stringify(next,null,2));return {...next,analyticsEnabled:analyticsEnabled(),background:backgroundSettings(root)};
 }
 function runFolder(root,id){if(!/^free-[a-f0-9]{16}$/.test(id))throw Error('Invalid run ID');return under(root,'.carbon/free/runs/'+id)}
 function load(root,id){const state=read(path.join(runFolder(root,id),'state.json'));if(!state||state.schema!=='carbon.free-run/v1')throw Error('Run not found');return state}
@@ -69,12 +76,12 @@ async function ensureWeb(){
   if(!auth){res.writeHead(403,headers);return res.end('Private report: missing access token')}
   try{
    if(url.pathname==='/snapshot'&&req.method==='GET'){
-    res.writeHead(200,headers);return res.end(s.mode==='settings'?render({settings:preferences(s.root),analyticsEnabled:analyticsEnabled()},'settings'):render(load(s.root,s.run),url.searchParams.get('mode')==='map'?'map':s.mode));
+    res.writeHead(200,headers);return res.end(s.mode==='settings'?render(settingsState(s.root),'settings'):render(load(s.root,s.run),url.searchParams.get('mode')==='map'?'map':s.mode));
    }
    if(url.pathname==='/settings'&&req.method==='POST'&&s.mode==='settings'){
     if(req.headers.origin!=='http://'+host)throw Error('Same-origin request required');
     let body='';for await(const chunk of req){body+=chunk;if(body.length>16000)throw Error('Request too large')}
-    const settings=setPreferences(s.root,JSON.parse(body));res.writeHead(200,{...headers,'Content-Type':'application/json'});return res.end(JSON.stringify({ok:true,settings}));
+    const settings=await setPreferences(s.root,JSON.parse(body));res.writeHead(200,{...headers,'Content-Type':'application/json'});return res.end(JSON.stringify({ok:true,settings}));
    }
    res.writeHead(404,headers);res.end('Not found');
   }catch(e){res.writeHead(400,{...headers,'Content-Type':'application/json'});res.end(JSON.stringify({ok:false,error:clean(e.message,300)}))}
@@ -91,7 +98,7 @@ const definitions=[
  ['carbon_start','Start a bounded Free assessment. Returns a live report URL; does not open the browser or execute tests itself.',{root:str,command:{type:'string',enum:commands.map(c=>c.name)},title:str,target:str,checks:arr},['root','command','title']],
  ['carbon_update','Record checks, findings, pages, persona journeys, blockers and confidence. Passed/failed checks require actual and evidence strings; there is no observed field. Merge by IDs; no findings are hidden.',{root:str,runId:str,current:str,why:str,summary:str,status:{type:'string',enum:['running',...terminal]},checks:checkArray,findings:arr,pages:arr,journeys:arr,personas:arr,blockers:{type:'array',items:str},confidence:obj},['root','runId']],
  ['carbon_report','Reopen a saved report or current-run map; returns portable HTML and JSON paths.',{root:str,runId:str,view:{type:'string',enum:['report','map']}},['root','runId']],
- ['carbon_settings','Read or update local preferences and global analytics opt-out; returns a local settings UI.',{root:str,patch:obj},['root']],
+ ['carbon_settings','Open Jay’s first-use/settings page. Read or explicitly update minutes, maxChecks, focus, analyticsEnabled, and backgroundMode (automatic/manual). Mode uses the shared supervisor and preserves global/environment pauses. Returns a protected browser target.',{root:str,patch:obj},['root']],
  ['carbon_demo','List or create a fresh disposable demo; never overwrites an existing project.',{root:str,action:{type:'string',enum:['list','create']},fixture:str,destination:str,testProfile:{type:'string',enum:['without-existing-tests','with-existing-tests']}},['root','action']],
  ['carbon_knowledge','Read bundled testing-domain, specialist or accessibility reference data.',{kind:{type:'string',enum:['domains','specialists','accessibility']},domain:str},['kind']]
 ];
@@ -104,7 +111,7 @@ async function call(name,a){
   if(!commands.some(c=>c.name===a.command))throw Error('Command not included in Free');if(!a.title)throw Error('Run title required');
   const checks=(a.checks||[]).map(normalizeCheck);if(new Set(checks.map(c=>c.id)).size!==checks.length)throw Error('Duplicate check IDs');
   const state={schema:'carbon.free-run/v1',edition:'free',id:'free-'+crypto.randomBytes(8).toString('hex'),command:a.command,title:clean(a.title,500),target:clean(a.target,2000),createdAt:now(),updatedAt:now(),status:'running',current:'Inspecting the target and selecting meaningful checks',why:'Start with the most consequential customer journeys',settings:preferences(root),checks,findings:[],pages:[],personas:[],history:[],blockers:[]};
-  save(root,state);await usage().record('Assessment Started',a.command,'start:'+state.id);return {runId:state.id,url:await viewer(root,state.id),reportPath:path.join(runFolder(root,state.id),'report.html'),defaults:state.settings};
+  save(root,state);await usage().record('Assessment Started',a.command,'start:'+state.id);const background=backgroundSettings(root);return {runId:state.id,...browserPresentation(await viewer(root,state.id)),reportPath:path.join(runFolder(root,state.id),'report.html'),defaults:state.settings,...(background.onboarding.needed?{onboarding:{needed:true,...browserPresentation(await viewer(root,null,'settings')),instruction:'Open this first-use settings page in the browser. Introduce Jay and let the user choose automatic quick checks or manual only. Saving is their choice; do not change settings on their behalf.'}}:{})};
  }
  if(name==='carbon_update'){
   const state=load(root,a.runId);if(terminal.has(state.status))throw Error('Run is closed; start a new assessment, preserving this evidence');
@@ -120,8 +127,8 @@ async function call(name,a){
   if(a.status){if(a.status!=='running'&&!terminal.has(a.status))throw Error('Invalid run status');if(a.status==='completed'&&state.checks.some(c=>['planned','running'].includes(c.status)))throw Error('Mark unexecuted checks deferred or blocked before completion');state.status=a.status}
   state.updatedAt=now();state.history.push({at:state.updatedAt,current:state.current,why:state.why});save(root,state);if(terminal.has(state.status))await usage().record('Assessment '+state.status[0].toUpperCase()+state.status.slice(1),state.command,'terminal:'+state.id);return {runId:state.id,status:state.status,checks:state.checks.length,findings:state.findings.length,reportPath:path.join(runFolder(root,state.id),'report.html')};
  }
- if(name==='carbon_report'){load(root,a.runId);const view=a.view==='map'?'map':'report';await usage().record('Report Viewed');return {url:await viewer(root,a.runId,view),htmlPath:path.join(runFolder(root,a.runId),view+'.html'),jsonPath:path.join(runFolder(root,a.runId),'state.json'),portable:'Copy the HTML file to share; images are embedded. Review for sensitive data before sharing.'}}
- if(name==='carbon_settings'){const settings=a.patch?setPreferences(root,a.patch):{...preferences(root),analyticsEnabled:analyticsEnabled()};await usage().record('Settings Viewed');return {settings,analytics:usage().status(),url:await viewer(root,null,'settings')};}
+ if(name==='carbon_report'){load(root,a.runId);const view=a.view==='map'?'map':'report';await usage().record('Report Viewed');return {...browserPresentation(await viewer(root,a.runId,view)),htmlPath:path.join(runFolder(root,a.runId),view+'.html'),jsonPath:path.join(runFolder(root,a.runId),'state.json'),portable:'Copy the HTML file to share; images are embedded. Review for sensitive data before sharing.'}}
+ if(name==='carbon_settings'){const settings=a.patch?await setPreferences(root,a.patch):{...preferences(root),analyticsEnabled:analyticsEnabled(),background:backgroundSettings(root)};await usage().record('Settings Viewed');return {settings,analytics:usage().status(),...browserPresentation(await viewer(root,null,'settings'))};}
  if(name==='carbon_demo'){
   const script=path.join(plugin,'runtime/carbon/scripts/carbon_demo.py');const args=a.action==='list'?['list']:['create','--root',root,'--fixture',a.fixture||'testbucks','--test-profile',a.testProfile||'without-existing-tests',...(a.destination?['--destination',a.destination]:[])];
   return JSON.parse(execFileSync('python3',['-I','-B',script,...args],{encoding:'utf8',timeout:30000,env:demoEnvironment()}));

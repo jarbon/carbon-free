@@ -1,0 +1,78 @@
+/* CARBON developer density. Embedded in exports: no remote assets or scripts. */
+html[data-carbon-density="compact"]:not([data-theme="light"]){color-scheme:dark}
+html[data-carbon-density="compact"] body{font-size:13px;line-height:1.45}
+html[data-carbon-density="compact"] :where(main,.shell){width:calc(100% - 32px);max-width:1600px;padding:12px 0 28px;margin-inline:auto}
+html[data-carbon-density="compact"] :where(h1,.mission h1,.decision-hero h1){font-size:clamp(21px,2.3vw,28px);line-height:1.2;letter-spacing:-.025em;max-width:none;margin:8px 0}
+html[data-carbon-density="compact"] :where(h2,.panel h2){font-size:16px;line-height:1.3;margin:8px 0}
+html[data-carbon-density="compact"] :where(h3){font-size:14px;line-height:1.35;margin:6px 0}
+html[data-carbon-density="compact"] :where(p){margin:6px 0;overflow-wrap:anywhere}
+html[data-carbon-density="compact"] :where(.masthead,.mast,body>header){min-height:42px;padding:7px 10px;margin:0 0 10px;gap:10px;box-shadow:none}
+html[data-carbon-density="compact"] :where(.brand-mark,.mark){width:28px;height:28px}
+html[data-carbon-density="compact"] :where(.brand-wordmark,.word){font-size:13px;letter-spacing:.16em}
+html[data-carbon-density="compact"] :where(.product-name,.updated){font-size:11px}
+html[data-carbon-density="compact"] :where(.panel,.card,.hero,.mission,.confidence-card,.decision-hero,.boundary,.report-section,.finding-card,.persona-card){padding:12px;margin-block:10px;border-radius:6px;box-shadow:none;min-height:0}
+html[data-carbon-density="compact"] :where(.decision-headline,.decision-hero h2){font-size:24px;max-width:none;line-height:1.2}
+html[data-carbon-density="compact"] :where(.decision-summary,.decision-hero p,.scope,.lead){font-size:13px;line-height:1.5}
+html[data-carbon-density="compact"] :where(.metrics,.metric-grid,.signal-grid,.mission-grid,.layout,.mission-signals,.confidence-board,.stats-grid){gap:10px;margin-block:10px}
+html[data-carbon-density="compact"] :where(.metric,.stat,.signal,.confidence-ledger article){padding:8px 10px;border-radius:4px}
+html[data-carbon-density="compact"] :where(.metric strong,.metric b,.stat strong,.confidence-values strong){font-size:22px;line-height:1.2;margin:4px 0;font-variant-numeric:tabular-nums}
+html[data-carbon-density="compact"] :where(.metric small,.metric span,.stat span){font-size:11px}
+html[data-carbon-density="compact"] :where(.run-head,.run-meta,.timeline,.evidence-spine){margin-block:8px;gap:8px}
+html[data-carbon-density="compact"] :where(.timeline-step){padding:8px;min-height:0}
+html[data-carbon-density="compact"] :where(.timeline-step strong){font-size:12px}
+html[data-carbon-density="compact"] :where(.step){padding-block:9px;min-height:0}
+html[data-carbon-density="compact"] :where(.why,.top-risk,.just-happened,.latest-finding){padding:8px 10px;margin-block:8px}
+html[data-carbon-density="compact"] :where(.evidence-grid,.grid){gap:10px}
+html[data-carbon-density="compact"] :where(.evidence-copy,.risk){padding:9px}
+html[data-carbon-density="compact"] :where(.footer,.foot,footer){padding-block:12px;margin-top:12px;font-size:11px}
+html[data-carbon-density="compact"] :where(details){padding-block:6px;margin-block:4px}
+html[data-carbon-density="compact"] :where(summary){min-height:30px;padding:5px 0;cursor:pointer}
+html[data-carbon-density="compact"] :where(button,select,input:not([type=checkbox]):not([type=radio])){min-height:30px;padding:5px 9px;font-size:12px;border-radius:4px}
+html[data-carbon-density="compact"] :where(button,summary,a):focus-visible{outline:2px solid currentColor;outline-offset:3px}
+html[data-carbon-density="compact"] :where(th,td){padding:6px 8px;font-size:12px;vertical-align:top}
+html[data-carbon-density="compact"] :where(pre,code,.updated,time){font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-variant-numeric:tabular-nums}
+html[data-carbon-density="compact"] :where(pre){font-size:12px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere;padding:8px;max-height:360px;overflow:auto}
+/* Monochrome by default, without removing textual statuses or light-mode support. */
+html[data-carbon-density="compact"]:not([data-theme="light"]){--bg:#101010;--panel:#171717;--panel-raised:#1c1c1c;--panel-soft:#141414;--surface:#171717;--panel2:#202020;--line:#343434;--line-bright:#686868;--text:#eee;--muted:#aaa;--sub:#aaa;--accent:#ddd;--mint:#ddd;--mint-ink:#111;--good:#ccc;--pass:#ccc;--risk:#eee;--bad:#fff;--fail:#fff;--warn:#aaa;--block:#aaa;--good-soft:#ffffff09;--risk-soft:#ffffff0d;--bad-soft:#ffffff0d;--warn-soft:#ffffff09;--risk-line:#777}
+html[data-carbon-density="compact"]:not([data-theme="light"]) body{background:#101010}
+html[data-carbon-density="compact"]:not([data-theme="light"]) :where(.panel,.card,.hero,.mission,.confidence-card,.decision-hero){background:#171717;border-color:#383838}
+html[data-carbon-density="compact"] :where(.shell:has(>.sidebar)){width:100%;max-width:none;padding:0;grid-template-columns:160px minmax(0,1fr)}
+html[data-carbon-density="compact"] .sidebar{padding:16px 8px 12px}
+html[data-carbon-density="compact"] .sidebar .brand{gap:6px;margin:0 8px 16px}
+html[data-carbon-density="compact"] .sidebar .brand img{width:92px}
+html[data-carbon-density="compact"] .sidebar nav{gap:4px}
+html[data-carbon-density="compact"] .content{padding:12px 16px;max-width:1600px;width:100%}
+html[data-carbon-density="compact"] .topbar{min-height:42px;padding:8px 16px}
+html[data-carbon-density="compact"] .empty{gap:8px;justify-items:start;text-align:left}
+html[data-carbon-density="compact"] .empty p{max-width:80ch}
+html[data-carbon-density="compact"] .empty .jay-manager{margin:0 0 6px}
+html[data-carbon-density="compact"] .jay-manager{gap:8px;margin-bottom:8px}
+html[data-carbon-density="compact"] .jay-manager strong{font-size:15px}
+html[data-carbon-density="compact"] .jay-face{width:32px;height:32px}
+html[data-carbon-density="compact"] :where(.page-heading,.section-head){gap:10px;margin-bottom:10px}
+html[data-carbon-density="compact"] .metrics{padding-block:10px;gap:14px;margin-bottom:10px}
+html[data-carbon-density="compact"] .metrics strong{font-size:22px}
+html[data-carbon-density="compact"] .metrics small{margin-bottom:4px}
+html[data-carbon-density="compact"] :where(.two-column){gap:12px}
+html[data-carbon-density="compact"] #app :where(section,.history){padding:12px;margin:10px 0;border-radius:6px;box-shadow:none}
+html[data-carbon-density="compact"] #app :where(.brand){font-size:17px}
+html[data-carbon-density="compact"] #app .mission{gap:14px;grid-template-columns:minmax(0,1fr) 220px}
+html[data-carbon-density="compact"] #app .mission.without-capture{grid-template-columns:1fr}
+html[data-carbon-density="compact"] :where(.stack,.bar) .passed{background:#aaa}
+html[data-carbon-density="compact"] :where(.stack,.bar) .failed{background:#eee}
+html[data-carbon-density="compact"] :where(.stack,.bar) .blocked{background:#777}
+html[data-carbon-density="compact"] .masthead .carbon-jay{margin:0;padding:0;border:0}
+html[data-carbon-density="compact"] .masthead .carbon-jay summary{padding:2px;min-height:32px;gap:7px}
+html[data-carbon-density="compact"] .masthead .carbon-jay img{width:28px;height:28px;object-fit:contain}
+html[data-carbon-density="compact"] .masthead .carbon-jay strong{font-size:13px}
+html[data-carbon-density="compact"] .masthead .carbon-jay small{font-size:10px}
+html[data-carbon-density="compact"] .cf-summary{margin:0 0 8px;padding:0;gap:8px}
+html[data-carbon-density="compact"]:not([data-theme="light"]) :where(.status-pill,.cf-summary button,.cf-controls button){color:#ddd;background:#202020;border-color:#555}
+@media(min-width:801px) and (hover:hover) and (pointer:fine){html[data-carbon-density="compact"] :is(.cr-brief>.cf-item,.cr-content>.cf-wrap)>.cf-controls{position:absolute;top:5px;right:4px;background:#191919}html[data-carbon-density="compact"] :is(.cr-brief>.cf-item,.cr-content>.cf-wrap):has(>.cf-controls){padding-right:108px}html[data-carbon-density="compact"] .cf-wrap{margin-block:0}}
+@media(min-width:1000px){html[data-carbon-density="compact"] .mission-grid{grid-template-columns:minmax(0,2fr) minmax(240px,1fr)}html[data-carbon-density="compact"] .metrics{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}}
+@media(max-width:600px){html[data-carbon-density="compact"] :where(main,.shell){width:calc(100% - 20px);padding-top:10px}html[data-carbon-density="compact"] :where(.mission-grid,.layout,.confidence-board){grid-template-columns:1fr}html[data-carbon-density="compact"] .metrics{grid-template-columns:repeat(2,minmax(0,1fr))}html[data-carbon-density="compact"] :where(.panel,.card,.hero,.mission,.confidence-card){padding:10px}}
+@media(max-width:800px){html[data-carbon-density="compact"] :where(.shell:has(>.sidebar)){grid-template-columns:1fr;width:100%;padding:0}html[data-carbon-density="compact"] .sidebar{position:static;height:auto}html[data-carbon-density="compact"] .content{padding:10px}html[data-carbon-density="compact"] #app .mission{grid-template-columns:1fr}}
+@media(pointer:coarse){html[data-carbon-density="compact"] :where(button,select,input:not([type=checkbox]):not([type=radio]),summary){min-height:44px}}
+@media(prefers-reduced-motion:no-preference){html[data-carbon-density="compact"] :where(button,summary){transition:background-color .12s ease,border-color .12s ease}html[data-carbon-density="compact"] details[open]>:not(summary){animation:carbon-detail-in .14s ease-out}@keyframes carbon-detail-in{from{opacity:.55;transform:translateY(-2px)}to{opacity:1;transform:none}}}
+@media(prefers-reduced-motion:reduce){html[data-carbon-density="compact"] *,html[data-carbon-density="compact"] *::before,html[data-carbon-density="compact"] *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media print{html[data-carbon-density="compact"] pre{max-height:none;overflow:visible}html[data-carbon-density="compact"] :where(.panel,.card){break-inside:avoid}}

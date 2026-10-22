@@ -1,5 +1,21 @@
 # Testers.ai CARBON Test Harness
 
+## CARBON via npm / MCP
+
+The free, MIT-licensed runtime with **Jay** is also packaged as
+`@testers-ai/carbon-mcp`. Requires Node.js 22+; demo and full-workflow helpers
+also require Python 3.10+.
+
+```sh
+npx -y @testers-ai/carbon-mcp@1.32.22-free.17 --doctor
+npx -y @testers-ai/carbon-mcp@1.32.22-free.17 --print-config
+```
+
+See the [npm setup guide](npm/README.md) for the 13 MCP workflow prompts,
+six tools, host requirements, and privacy boundaries. npm analytics defaults off;
+npm installation alone does not register native agent hooks or supply model access.
+The [npm release procedure](npm/RELEASE.md) documents source and package checks.
+
 ## Your agent's plan. Your local workspace.
 
 **Use the model access you already have.** In Claude Code, Codex, and other coding

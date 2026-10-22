@@ -40,5 +40,7 @@ const claude=JSON.parse(fs.readFileSync(path.join(root,'.claude-plugin/plugin.js
 assert.equal(claude.name,'carbon','Keep existing command namespace');
 assert.equal(claude.displayName,'Testers.ai CARBON Test Harness');
 assert.match(claude.description,/test harness/);
-assert.match(claude.description,/quality reports/);
+assert.match(claude.description,/quality/);
+assert.match(claude.description,/reports/);
+assert.match(claude.description,/Jay/);
 console.log(JSON.stringify({passed:true,retainedImages:refs.size,isolatedPython:true,credentialInheritance:false,versions:manifests}));

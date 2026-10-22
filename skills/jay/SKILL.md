@@ -13,7 +13,7 @@ or its available focused command. Preserve target resolution, evidence rules,
 edition limits, budgets and permissions. Do not route a question through a demo.
 
 <!-- jay-background -->
-For first-use quick assessment, automatic selection and optional background setup, read [first-use guidance](../../background/first-use.md). Explicit user scope and limits take precedence.
+For automatic Jay quick checks after changes, read [first-use guidance](../../background/first-use.md). Preserve pauses, user scope and host permissions.
 <!-- /jay-background -->
 
 <!-- usage-command:start -->

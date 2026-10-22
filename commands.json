@@ -46,5 +46,9 @@
   {
     "name": "carbon-pro",
     "description": "Open the CARBON Pro marketing page to explore Pro features, pricing, and upgrade options."
+  },
+  {
+    "name": "full",
+    "description": "Run Jay's comprehensive, resumable test campaign with parallel checks, reviewed findings and live progress, using this edition's capabilities."
   }
 ]

@@ -15,7 +15,9 @@ Host-specific configuration is in the packaged `.mcp.json`; do not copy Pro setu
 
 The host agent supplies browser, shell and model execution. No separate LLM API
 key is required by this Free server; host subscription/API costs still apply.
-Demo creation requires Python 3.10+. Free exposes eight prompts, not the full Pro catalog.
+Demo creation and full-workflow helpers require Python 3.10+. Free exposes thirteen
+workflow prompts, including Jay aliases, background controls, Pro navigation and
+`full`, not the full Pro catalog. `commands.json` is the authoritative prompt list.
 
 Evidence lives under `.carbon/free/runs/<runId>/`. Live views require the local
 process and private view token; HTML/JSON exports remain usable afterward.
@@ -45,7 +47,7 @@ Jay replies in first person, in a frank, practical tone inspired by Jason Arbon.
 He is an AI persona, not Jason. With no clear testing target he asks for a URL,
 folder/repository, API, app/feature, or requirements. He does not create a demo
 unless asked. Questions do not automatically start tests, and fixes still need
-authorization. Lite keeps its existing capabilities; these are two conversational
+authorization. Free keeps its existing capabilities; these are two conversational
 entrypoints, not two new testing workflows or an upgrade to Pro.
 
 Jay's bundled icon appears in compatible command pickers and CARBON report views.

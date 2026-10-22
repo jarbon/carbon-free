@@ -52,7 +52,7 @@ Offer another focused Free assessment when useful. Do not insert unsolicited upg
 promotions into test results. Describe unavailable capabilities factually when asked.
 
 <!-- jay-background -->
-For first-use quick assessment, automatic selection and optional background setup, read [first-use guidance](../../background/first-use.md). Explicit user scope and limits take precedence.
+For automatic Jay quick checks after changes, read [first-use guidance](../../background/first-use.md). Preserve pauses, user scope and host permissions.
 <!-- /jay-background -->
 
 <!-- usage-command:start -->
@@ -65,3 +65,12 @@ analytics preference; do not enable analytics automatically, install anything,
 or retry this helper yourself. Failure or missing terminal access must never
 block the command. This records a command invocation, not a completed test.
 <!-- usage-command:end -->
+
+<!-- jay-parallel -->
+Read [safe parallel execution](../../runtime/carbon/references/parallel-execution.md).
+Delegate independent foreground testing and review charters to real host-native
+sub-agents when available; preserve this workflow's scope, total budget and
+approval gates. Use isolated resources and one coordinating report writer.
+State serial fallback when delegation is unavailable. Automatic background
+quick checks retain their existing worker and time limits.
+<!-- /jay-parallel -->

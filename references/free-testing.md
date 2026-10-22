@@ -32,6 +32,13 @@ and `checks`. It returns `runId`, live `url` and portable `reportPath`.
 Use the host's tool to open the live URL inside the coding agent; never claim browser
 opening when the host cannot do it. Show a clickable fallback HTML link.
 
+On first use, `carbon_start` also returns `onboarding.needed` and a protected settings
+browser target. Open that settings target first, introduce Jay, and let the user
+choose automatic quick checks or manual-only testing. Do not save a choice on their
+behalf or claim the page appeared if browser opening was unavailable. Session-start
+onboarding uses the same saved completion state. The user can reopen the page with
+`/carbon:carbon-settings`. Closing it is not consent or completion.
+
 `carbon_update` takes root/runId and merges lists by stable IDs. Example check:
 
 ```json
@@ -75,7 +82,10 @@ Investigation views. Omitted data stays omitted, not a successful outcome.
 paths. They remain usable after the MCP process closes; the protected live URL does not.
 Free Map represents one assessment; it does not compare builds or retain steering.
 
-`carbon_settings` changes minutes, maxChecks, focus and global analyticsEnabled.
+`carbon_settings` changes minutes, maxChecks, focus, global analyticsEnabled and
+backgroundMode (`automatic` or `manual`) through the existing background supervisor.
+Global pause and environment disables remain in effect. Saving the mode does not
+enable AI review or add executable tests. Only an explicit choice completes onboarding.
 Don't store credentials in focus. `CARBON_ANALYTICS=off` always opts out.
 
 ## Safety and privacy
