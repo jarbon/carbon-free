@@ -1,0 +1,12 @@
+{
+  "name": "carbon-free-plugins",
+  "owner": {
+    "name": "jarbon"
+  },
+  "plugins": [
+    {
+      "name": "carbon-core",
+      "source": "platforms/cursor/1.32.23-cursor.5/CARBON"
+    }
+  ]
+}

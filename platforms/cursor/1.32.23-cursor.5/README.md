@@ -10,6 +10,6 @@ Local protocol regression: 174 assertions; read-only demo regression: 347 assert
 
 ## Discovery and setup
 
-The plugin root is `platforms/cursor/1.32.23-cursor.5/CARBON`. Cursor multi-plugin repository discovery requires a root `.cursor-plugin/marketplace.json` entry pointing there; the additive subtree alone is not a complete discovery configuration. That root entry must be reviewed separately before publication/submission. See the official Cursor plugin reference: https://cursor.com/docs/reference/plugins . Use Node.js 22+ and Python 3.10+ for the bundled local runtime/demo. Host installation and permissions require user authorization.
+The plugin root is `platforms/cursor/1.32.23-cursor.5/CARBON`. Cursor multi-plugin repository discovery requires a root `.cursor-plugin/marketplace.json` entry pointing there; the additive subtree alone is not a complete discovery configuration. The prepared root entry names carbon-core and points to this exact plugin root; publication/submission remains separately gated. See the official Cursor plugin reference: https://cursor.com/docs/reference/plugins . Use Node.js 22+ and Python 3.10+ for the bundled local runtime/demo. Host installation and permissions require user authorization.
 
 Analytics are stateless and disabled. Optional teammate addresses remain local drafts, with no invitations/shared report delivery. Windows private draft storage fails closed. Review the host-specific privacy disclosure before using real project context.
