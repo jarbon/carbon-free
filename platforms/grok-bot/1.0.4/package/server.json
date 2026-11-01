@@ -1,0 +1,43 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.jarbon/carbon",
+  "title": "CARBON",
+  "description": "AI testing harness with Jay: risk-based checks, bug investigation, and local evidence reports.",
+  "version": "1.32.22-mcp.2",
+  "websiteUrl": "https://testers.ai/carbon/",
+  "repository": {
+    "url": "https://github.com/jarbon/carbon-free",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@testers-ai/carbon-mcp",
+      "version": "1.32.22-mcp.2",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "CARBON_ANALYTICS",
+          "description": "Optional content-free analytics. Off by default; set off to force-disable.",
+          "isRequired": false,
+          "isSecret": false,
+          "choices": [
+            "off",
+            "on"
+          ]
+        },
+        {
+          "name": "DO_NOT_TRACK",
+          "description": "Set 1 to disable analytics regardless of preferences.",
+          "isRequired": false,
+          "isSecret": false,
+          "choices": [
+            "1"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {createHash} from 'node:crypto';
+import {artifactResult,grokTool,grokText,deliveryGuidance} from '../package/bin/grok-delivery.mjs';
+const result=artifactResult({structuredContent:{root:'/synthetic',runId:'synthetic-run',url:'http://127.0.0.1:123/live?session=demo#sentinel_capability_789',panel:{resourceUri:'ui://carbon/live/v1.html'},onboarding:{url:'http://localhost:123/token'},state:{status:'blocked'}}},'carbon_start');
+assert(!result._meta);assert(!JSON.stringify(result).includes('sentinel_capability_789'));assert(!JSON.stringify(result).includes('ui://'));assert.equal(result.structuredContent.delivery.status,'attachment-required');assert.equal(result.structuredContent.delivery.nextTool.name,'carbon_report');
+const report=artifactResult({content:[{type:'text',text:JSON.stringify({htmlPath:'/synthetic/report.html',url:'http://localhost:123/view#sentinel_capability_789'})}]},'carbon_report');
+assert.equal(report.structuredContent.delivery.htmlPath,'/synthetic/report.html');assert(!report.structuredContent.delivery.url);assert.match(report.structuredContent.delivery.instructions,/Never invent a URL/);
+assert(!grokTool({name:'carbon_start',_meta:{ui:{resourceUri:'ui://x'}}})._meta);
+const shared=fs.readFileSync(new URL('../package/server/index.mjs',import.meta.url));
+assert.equal(createHash('sha256').update(shared).digest('hex'),'e9d18a7dbce2ecf6232bbbbd77fdd3ecd5252b7e19a1fe914ac2c27767d60e45');
+assert.match(shared.toString(),/resourceUri:LIVE_URI/);
+assert.match(grokText('http://127.0.0.1:123/view#sentinel_capability_789'),/withheld/);
+console.log('PASS: withheld local capability URLs/UI metadata; attachment required, no invented URL; shared base server byte-identical.');
+
+assert.match(deliveryGuidance,/Choose Preview to view the report; Source shows its HTML/);
+assert.match(deliveryGuidance,/Only if the host returns an actual artifact URL, label that unchanged URL "Open interactive report"/);
+assert.match(deliveryGuidance,/otherwise refer to the actual file card/);
+assert.match(deliveryGuidance,/Never append a preview parameter/);
+assert.match(deliveryGuidance,/not a guaranteed fix/);
+assert(!JSON.stringify(report.structuredContent.delivery).includes('sand-html-preview:'));
+assert(!Object.hasOwn(report.structuredContent.delivery,'url'));
+console.log('PASS: Preview guidance conditional on genuine host URL; no synthesized link, default-view flag or force-preview promise.');

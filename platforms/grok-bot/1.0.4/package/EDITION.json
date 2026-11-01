@@ -1,0 +1,17 @@
+{
+  "edition": "free",
+  "version": "1.32.22-mcp.2",
+  "publicDistribution": true,
+  "commandCount": 13,
+  "namespace": "carbon",
+  "installPolicy": "Install one edition at a time; preserve .carbon project data when upgrading.",
+  "distribution": "npm",
+  "conversationalAliases": [
+    "j",
+    "jay"
+  ],
+  "upgradeUrl": "https://testers.ai/carbon/#pro",
+  "sourceVersion": "1.32.22-free.18",
+  "npmPackage": "@testers-ai/carbon-mcp",
+  "agentName": "Jay"
+}
