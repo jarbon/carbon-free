@@ -1,0 +1,24 @@
+{
+  "name": "carbon-core",
+  "version": "1.32.23-cursor.5",
+  "description": "CARBON Core: AI software testing with Jay. Risk-based exploratory, regression and accessibility workflows, reproducible findings, and local HTML evidence reports.",
+  "author": {
+    "name": "testers.ai",
+    "email": "jason@testers.ai"
+  },
+  "homepage": "https://testers.ai/carbon/",
+  "repository": "https://github.com/jarbon/carbon-free",
+  "license": "MIT",
+  "logo": "assets/icon.png",
+  "keywords": [
+    "testing",
+    "qa",
+    "accessibility",
+    "regression",
+    "exploratory-testing",
+    "mcp"
+  ],
+  "skills": [],
+  "commands": "./commands/",
+  "mcpServers": "./mcp.json"
+}

@@ -1,5 +1,7 @@
 # Testers.ai CARBON Test Harness
 
+Cursor source candidate: [CARBON Core 1.32.23-cursor.5](platforms/cursor/1.32.23-cursor.5/README.md) · [Cursor-specific privacy](platforms/cursor/1.32.23-cursor.5/CARBON/PRIVACY.md). Bounded native HTTP smoke passed; marketplace review remains pending.
+
 Grok Bot source prerelease: [CARBON Core 1.0.2](platforms/grok-bot/1.0.2/README.md) · [Grok-specific privacy](platforms/grok-bot/1.0.2/PRIVACY.md). Local protocol tests passed; native Grok testing and marketplace review remain pending.
 
 ## Your agent's plan. Your local workspace.
