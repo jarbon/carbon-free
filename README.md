@@ -234,3 +234,7 @@ First activation is once per edition/local configuration, not an install or a
 unique person. Installs come from publisher dashboards. Command telemetry is
 best effort: hosts that do not execute the skill's helper cannot be counted.
 <!-- usage-analytics:end -->
+
+## Grok Bot 1.0.3 prerelease
+
+[CARBON Core for Grok Bot 1.0.3](platforms/grok-bot/1.0.3/) uses saved HTML reports delivered through Grok file attachments. Local package and synthetic-state checks passed; native verification of this version is pending. [Download the prerelease](https://github.com/jarbon/carbon-free/releases/tag/grok-bot-v1.0.3).
