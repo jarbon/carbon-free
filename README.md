@@ -1,5 +1,7 @@
 # Testers.ai CARBON Test Harness
 
+Grok Bot source prerelease: [CARBON Core 1.0.2](platforms/grok-bot/1.0.2/README.md) · [Grok-specific privacy](platforms/grok-bot/1.0.2/PRIVACY.md). Local protocol tests passed; native Grok testing and marketplace review remain pending.
+
 ## Your agent's plan. Your local workspace.
 
 **Use the model access you already have.** In Claude Code, Codex, and other coding

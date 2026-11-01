@@ -1,0 +1,72 @@
+{
+  "name": "@testers-ai/carbon-mcp",
+  "version": "1.32.22-mcp.2",
+  "description": "CARBON AI testing harness with Jay: risk-based software testing, exploratory and regression checks, accessibility, triage, and local evidence reports via MCP.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "carbon-mcp": "bin/carbon-mcp.mjs"
+  },
+  "files": [
+    "team-drafts",
+    ".claude-plugin/plugin.json",
+    "LICENSE",
+    "NOTICE.md",
+    "SECURITY.md",
+    "COMMANDS.md",
+    "MCP_SERVER.md",
+    "EDITION.json",
+    "commands.json",
+    "assets",
+    "background",
+    "references",
+    "runtime",
+    "server",
+    "skills",
+    "ui",
+    "scripts/usage-analytics.mjs",
+    "scripts/fathom-analytics.mjs",
+    "scripts/analytics-product.json",
+    "bin",
+    "README.md",
+    "PRIVACY.md",
+    "server.json",
+    "GROK-BOT.md",
+    "ADAPTER.json",
+    "runtime-state.mjs"
+  ],
+  "homepage": "https://testers.ai/carbon/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jarbon/carbon-free.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jarbon/carbon-free/issues"
+  },
+  "author": {
+    "name": "testers.ai",
+    "url": "https://testers.ai"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "carbon",
+    "jay",
+    "ai-test-manager",
+    "testing",
+    "software-testing",
+    "test-harness",
+    "test-automation",
+    "qa",
+    "quality-assurance",
+    "regression-testing",
+    "exploratory-testing",
+    "accessibility",
+    "browser-testing"
+  ],
+  "mcpName": "io.github.jarbon/carbon",
+  "private": true
+}

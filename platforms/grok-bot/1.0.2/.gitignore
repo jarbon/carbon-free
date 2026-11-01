@@ -1,0 +1,4 @@
+disposable/
+output/*.tgz
+output/FILES.sha256.json
+output/SHA256SUMS

@@ -1,0 +1,16 @@
+{
+  "schema": "carbon.grok-submission/v1",
+  "name": "CARBON Core for Grok Bot",
+  "submissionVersion": "1.0.2",
+  "adapterVersion": "1.0.1",
+  "coreVersion": "1.32.22-mcp.2",
+  "entrypoint": "bin/carbon-grok-bot.mjs",
+  "transport": "stdio",
+  "tools": 9,
+  "workflows": 13,
+  "analytics": "forced off",
+  "nativeAppVerified": false,
+  "published": false,
+  "runtimeState": "~/.config/carbon-grok-bot/runtime-v1",
+  "corePatch": "Grok runtime-state routing; base upstream version retained"
+}
