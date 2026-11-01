@@ -1,0 +1,3 @@
+import fs from 'node:fs';
+export const isMcpDistribution = JSON.parse(fs.readFileSync(new URL('../EDITION.json', import.meta.url))).distribution === 'antigravity';
+export const mcpGuidance = 'MCP distribution: use the host prompt picker or ask the agent to load a named MCP prompt. Prompt names are not guaranteed slash commands. Reopen settings by asking the agent to call carbon_settings with the absolute project root. This npm installation does not register automatic/background hooks; testing is manual. Do not enable a background supervisor or infer installed hooks from saved native-plugin preferences.';

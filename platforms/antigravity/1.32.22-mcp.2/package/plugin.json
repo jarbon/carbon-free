@@ -1,0 +1,26 @@
+{
+  "$schema": "https://antigravity.google/schemas/v1/plugin.json",
+  "name": "carbon",
+  "displayName": "CARBON Core",
+  "version": "1.32.22-mcp.2",
+  "description": "AI software testing with Jay: prioritize risky changes, investigate bugs, check accessibility, and keep evidence in local HTML reports.",
+  "logo": "assets/icon.png",
+  "author": {
+    "name": "testers.ai",
+    "url": "https://testers.ai"
+  },
+  "homepage": "https://testers.ai/carbon/",
+  "repository": "https://github.com/jarbon/carbon-free",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "qa",
+    "accessibility",
+    "regression"
+  ],
+  "suggestedPrompts": [
+    "Use CARBON to test my latest changes and show evidence and gaps.",
+    "Use CARBON to create and test a disposable TestBucks demo.",
+    "Ask Jay to investigate my sign-in flow."
+  ]
+}

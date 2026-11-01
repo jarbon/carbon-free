@@ -238,3 +238,7 @@ best effort: hosts that do not execute the skill's helper cannot be counted.
 ## Grok Bot 1.0.3 prerelease
 
 [CARBON Core for Grok Bot 1.0.3](platforms/grok-bot/1.0.3/) uses saved HTML reports delivered through Grok file attachments. Local package and synthetic-state checks passed; native verification of this version is pending. [Download the prerelease](https://github.com/jarbon/carbon-free/releases/tag/grok-bot-v1.0.3).
+
+## Antigravity prerelease
+
+[CARBON Core for Antigravity 1.32.22-mcp.2](platforms/antigravity/1.32.22-mcp.2/) includes a bounded native global MCP logic-flow smoke test and desktop/mobile saved-report rendering checks. Strict agy validation remains unverified and workspace registration unresolved; no full-browser or marketplace approval claim. [Download the prerelease](https://github.com/jarbon/carbon-free/releases/tag/antigravity-v1.32.22-mcp.2).

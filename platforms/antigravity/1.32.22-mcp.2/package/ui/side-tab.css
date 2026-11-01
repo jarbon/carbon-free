@@ -1,0 +1,69 @@
+/* CARBON side-tab theme: report and settings pages share the live panel's design tokens.
+   Tablet-first (≈380–760 px, a side tab), widening gracefully. Loaded last; markup and behavior unchanged. */
+html{--st-bg:#0a0c0f;--st-panel:#111419;--st-panel2:#171b21;--st-line:#222832;--st-line2:#2f3641;--st-text:#eceff3;--st-muted:#949cab;--st-dim:#5f6774;--st-accent:#7fe0c3;--st-pass:#5fd49e;--st-fail:#ff6b6b;--st-warn:#e8b45a;--st-skip:#7d8593}
+html,body{background:var(--st-bg)!important;color:var(--st-text)}
+body{font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--st-text);text-underline-offset:3px;text-decoration-color:var(--st-line2)}a:hover{text-decoration-color:var(--st-muted)}
+:focus-visible{outline:2px solid var(--st-accent)!important;outline-offset:2px!important}
+/* Header: sticky, quiet */
+body>header{position:sticky;top:0;z-index:20;max-width:none!important;margin:0!important;padding:10px 16px!important;min-height:0;gap:10px!important;border-bottom:1px solid var(--st-line)!important;background:color-mix(in srgb,var(--st-bg) 88%,transparent)!important;backdrop-filter:blur(10px)}
+body>header img{width:26px!important;height:26px;border-radius:6px}
+body>header strong{font-size:11px;letter-spacing:.24em}body>header small{color:var(--st-muted);font-size:12px}
+#connection{font-size:10px}
+main{max-width:1100px!important;padding:14px 16px 24px!important;margin:0 auto!important}
+footer{max-width:1100px!important;padding:8px 16px 24px!important;color:var(--st-dim);font-size:12px}
+h1{font-size:clamp(22px,5vw,30px)!important;line-height:1.18!important;letter-spacing:-.025em!important}
+h2{font-size:16px}h3{font-size:14.5px}
+.muted,small{color:var(--st-muted)!important}
+/* Buttons: one system */
+button,.button{font:inherit!important;font-size:13px!important;font-weight:550;color:var(--st-text)!important;background:transparent!important;border:1px solid var(--st-line2)!important;border-radius:9px!important;min-height:36px!important;padding:0 12px!important;box-shadow:none!important;transition:background-color .15s,border-color .15s}
+button:hover,.button:hover{background:var(--st-panel2)!important;border-color:var(--st-muted)!important}
+main>.row[aria-label="Report exports"]{justify-content:flex-end;gap:6px;margin:0 0 10px}
+main>.row[aria-label="Report exports"] button{min-height:30px!important;font-size:12px!important;color:var(--st-muted)!important}
+/* Cards */
+.panel{border:1px solid var(--st-line)!important;background:var(--st-panel)!important;border-radius:14px!important;padding:16px!important;margin:12px 0!important;box-shadow:none!important}
+.badge{background:var(--st-panel2)!important;color:var(--st-muted)!important;border:1px solid var(--st-line2);border-radius:6px}
+/* Report workspace */
+.cr-workspace{--cr-bg:var(--st-bg);--cr-panel:var(--st-panel);--cr-line:var(--st-line);--cr-muted:var(--st-muted);--cr-ink:var(--st-text);background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;margin:0 auto!important;font-size:14px!important}
+.cr-workspace button{min-height:36px!important;text-align:left}.cr-nav button{text-align:center}
+.cr-workspace button[aria-pressed=true]{background:var(--st-panel)!important;border-color:var(--st-line2)!important;box-shadow:0 1px 8px -4px #000a}
+.cr-top{display:block!important;padding:0 0 12px!important;margin:0 0 14px!important;border-bottom:0!important}
+.cr-top strong{font-size:15px}.cr-top>div:first-child small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cr-nav{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px!important;padding:5px;margin-top:12px;border:1px solid var(--st-line);border-radius:12px;background:var(--st-panel2)}
+.cr-nav button{border:0!important;font-size:12.5px!important;padding:0 6px!important;color:var(--st-muted)!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cr-nav button[aria-pressed=true]{color:var(--st-text)!important;background:var(--st-panel)!important}
+.cr-workspace .cr-verdict{font-size:clamp(24px,6vw,34px)!important;line-height:1.1!important;max-width:22ch!important}
+.cr-workspace h2{font-size:clamp(20px,4.5vw,26px)!important}
+.cr-workspace h3{font-size:14.5px!important}
+.cr-lead{font-size:14.5px!important;color:var(--st-muted)!important}
+.cr-kicker{font-size:10.5px!important;letter-spacing:.12em!important;color:var(--st-muted)!important}
+.cr-brief{grid-template-columns:1fr!important;gap:12px!important}
+.cr-actions{border-left:0!important;padding:14px!important;border:1px solid var(--st-line)!important;border-radius:14px;background:var(--st-panel)}
+.cr-workspace section,.cr-coverage,.cr-evidence,.cr-inspector{border-color:var(--st-line)!important}
+.cr-finding{display:grid!important;grid-template-columns:3px 1fr auto;gap:12px;align-items:stretch;width:100%;border:1px solid var(--st-line)!important;border-radius:10px!important;background:var(--st-panel2)!important;padding:10px 12px!important}
+.cr-finding .cr-marker{height:auto!important;min-height:26px;border-radius:3px}
+.cr-bar{height:6px!important;border-radius:99px;overflow:hidden;gap:2px!important}
+html .cr-workspace .cr-bar .cr-passed,html .cr-workspace .cr-legend i.cr-passed{background:var(--st-pass)!important}
+html .cr-workspace .cr-bar .cr-failed,html .cr-workspace .cr-legend i.cr-failed,html .cr-workspace .cr-marker.cr-failed{background:var(--st-fail)!important}
+html .cr-workspace .cr-bar .cr-blocked,html .cr-workspace .cr-legend i.cr-blocked,html .cr-workspace .cr-marker{background:var(--st-warn)}
+html .cr-workspace .cr-bar .cr-running,html .cr-workspace .cr-legend i.cr-running{background:var(--st-accent)!important}
+html .cr-workspace .cr-bar :is(.cr-planned,.cr-deferred,.cr-unrecorded),html .cr-workspace .cr-legend i:is(.cr-planned,.cr-deferred,.cr-unrecorded){background:var(--st-skip)!important}
+.cr-pill{border-radius:99px!important}
+.cr-workspace details{border-top:1px solid var(--st-line)}.cr-workspace summary{padding:12px 0!important;font-weight:600}
+.cr-page-grid{grid-template-columns:repeat(auto-fill,minmax(min(220px,100%),1fr))!important}
+#growth-upgrade .panel{background:linear-gradient(160deg,var(--st-panel),var(--st-panel2))!important}
+/* Settings */
+.testing-style legend{font-size:16px!important}
+.mode-choice{border:1px solid var(--st-line2)!important;background:var(--st-panel)!important;border-radius:12px!important;padding:14px!important}
+.mode-choice:has(input:checked){border-color:var(--st-accent)!important;background:color-mix(in srgb,var(--st-accent) 7%,var(--st-panel))!important;box-shadow:none!important}
+input[type=radio],input[type=checkbox]{accent-color:var(--st-accent)}
+input:not([type=radio]):not([type=checkbox]),textarea,select{font:inherit;color:var(--st-text)!important;background:var(--st-bg)!important;border:1px solid var(--st-line2)!important;border-radius:9px!important;padding:9px 11px!important;width:100%;max-width:100%}
+#settings-form>button[type=submit],#settings-form button:last-of-type{background:var(--st-text)!important;color:var(--st-bg)!important;border-color:var(--st-text)!important;min-height:42px!important;width:100%}
+/* Narrow side tabs */
+@media (max-width:520px){.cr-nav{grid-template-columns:repeat(2,minmax(0,1fr))}main{padding:12px 12px 20px!important}body>header{padding:9px 12px!important}.panel{padding:14px!important}}
+@media (min-width:900px){.cr-brief{grid-template-columns:minmax(0,1.6fr) minmax(260px,1fr)!important;gap:20px!important}}
+/* Page cards are buttons; the base button style is inline-flex, which squeezed their labels. */
+.cr-page-card{display:block!important;width:100%;padding:8px!important;text-align:left}
+.cr-page-card img{border-radius:6px}
+.cr-route li{flex:0 0 min(160px,70vw)}
+.cr-page-card>span:last-child{display:flex!important;flex-wrap:wrap;gap:4px 12px}

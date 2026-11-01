@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "carbon": {
+      "command": "node",
+      "args": [
+        "${PLUGIN_ROOT}/bin/carbon-mcp.mjs"
+      ],
+      "env": {
+        "CARBON_ANALYTICS": "off",
+        "DO_NOT_TRACK": "1",
+        "CARBON_BACKGROUND": "off"
+      }
+    }
+  }
+}
